@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+}
+.custom-class-for-a-custom-element {
+    button {
+        color: #fff !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #ed3330;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+        border: none;
+        transition: all 0.4s ease 0s;
+        cursor: pointer!important;
+        margin-top: 12px;
+        margin-left: 5px;
+        margin-right:5px;
+        margin-bottom:11px;
+    }
+}
+.custom-drop-down-item-example {
+    background-image: url('http://localhost:9000/assets/background-dog.jpg');
+    background-position-y: -17px;
+    background-repeat: no-repeat;
+    height: 482px;
+    width: 640px;
+
+    margin-bottom: -10px;
+}
+.custom-drop-down-item-text {
+    color: white;
+    b {
+        color: #ffbc2c;
+    }
+}
+.custom-drop-down-item-first-text {
+    padding-top: 1px;
+    margin-top: -36px;
+}
