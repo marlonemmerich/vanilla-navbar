@@ -35,21 +35,383 @@ const navbar = new Navbar(navbarParameters);
 |color|String|No|Hex color code|Color of the text elements of the navbar|
 |hoverColor|String|No|Hex color code|Color of the navbar elements on hover (except logos)|
 |customClass|String|Yes|Any|Custom class with your custom styles|
-|logos|Array|Yes|Array of Logo|Array of a logos obejcts|
-|itens|Array|Yes|Array of Item|Array of a itens obejcts|
-|dropDowns|Array|Yes|Array of DropDown|Array of a drop downs obejcts|
-|avatars|Array|Yes|Array of Avatar|Array of a drop downs obejcts|
-|customElements|Array|Yes|Array of CustomElement|Array of a customElements obejcts|
-#### Logos
+|logos|Array|Yes|Array of [Logo](#Logo)|Array of a logos obejcts|
+|itens|Array|Yes|Array of [Item](#Item)|Array of a itens obejcts|
+|dropDowns|Array|Yes|Array of [DropDown](#DropDown)|Array of a drop downs obejcts|
+|avatars|Array|Yes|Array of [Avatar](#Avatar)|Array of a drop downs obejcts|
+|customElements|Array|Yes|Array of [CustomElement](#CustomElement)|Array of a customElements obejcts|
+#### Logo
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
-|src|-|-|-|
-|event|-|-|-|
-|href|-|-|-|
-|position|-|-|-|
-|hideOnDevice|-|-|-|
-|customClass|-|-|-|
-|clickEvent|-|-|-|
+|src|String|No|Any|URL to the logo image|
+|clickEvent|String|Yes|Any|Event broadcast on click|
+|href|String|Yes|Any|URL to redirect on click|
+|position|String|No|"left", "center" or "right"|Logo alignment in navbar|
+|hideOnDevice|String|Yes|"desktop" or "mobile"|Hide logo in specific device|
+|customClass|String|Yes|Any|Custom class to the logo|
+#### Item
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|text|String|No|Any|Text to the item|
+|clickEvent|String|Yes|Any|Event broadcast on click|
+|href|String|Yes|Any|URL to redirect on click|
+|position|String|No|"left", "center" or "right"|Item alignment in navbar|
+|hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
+|customClass|String|Yes|Any|Custom class to the item|
+|forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
+#### DropDown
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|text|String|No|Any|Text to the item|
+|clickEvent|String|Yes|Any|Event broadcast on click|
+|position|String|No|"left", "center" or "right"|Item alignment in navbar|
+|hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
+|customClass|String|Yes|Any|Custom class to the item|
+|forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
+|columns|Array|No|Array of [Column](#Column)|Array of a columns objects|
+#### Avatars
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|src|String|No|Any|URL to the avatar image|
+|clickEvent|String|Yes|Any|Event broadcast on click|
+|position|String|No|"left", "center" or "right"|Item alignment in navbar|
+|hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
+|customClass|String|Yes|Any|Custom class to the item|
+|forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
+|columns|Array|Yes|Array of [Column](#Column)|Array of a columns objects|
+#### customElements
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|html|String|No|Any|Html of the custom element|
+|clickEvent|String|Yes|Any|Event broadcast on click|
+|position|String|No|"left", "center" or "right"|Custom element alignment in navbar|
+|hideOnDevice|String|Yes|"desktop" or "mobile"|Hide custom element in specific device|
+|customClass|String|Yes|Any|Custom class to the item|
+|forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
+|columns|Array|Yes|Array of [Column](#Column)|Array of a columns objects|
+#### Column
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|html|String|No|Any|Html of the custom element|
+|contentBoxes|Array|Yes|Array of [ContentBox](#ContentBox)|Array of a Dropdown Items objects|
+#### ContentBox
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|*text|String|No|Any|Text to the item|
+|**items|Array|Yes|Array of [Dropdown Items](#DropdownItems)|Array of a columns objects|
+|**customItems|Array|Yes|Array of [Dropdown Custom Items](#Dropdown-Custom-Items)|Array of a Dropdown Custom Items objects|
+*Only used if "items" is filled
+
+**Only one is accepted
+#### Dropdown Items
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|text|String|No|Any|Text to the dropdown item|
+|href|String|Yes|Any|URL to redirect on click|
+#### Dropdown Custom Items
+|Parameter|Type|Optional|Possible values|Description|
+|-|-|-|-|-|
+|text|String|No|Any|Text to the dropdown custom item|
+|href|String|Yes|Any|URL to redirect on click|
+|html|String|Yes|Any|Html of the dropdown custom item|
+
+## Complete example
+```script
+const navbarParameters = {
+    backgroundColor: '#6a1b9a',
+    hoverColor: '#54157b;',
+    color: '#fffff',
+    customClass: 'aaa',
+    logos: [
+        {
+            src: 'path-to-your-logo.jpg,
+            href: '/home',
+            position: 'left',
+            hideOnDevice: '',
+            customClass: 'custom',
+            clickEvent: 'test'
+        },
+    ],
+    items: [
+        {
+            text: 'Home',
+            href: '/',
+            position: 'center',
+            customClass: 'custom'
+        },
+        {
+            text: 'About',
+            href: '/about',
+            position: 'center'
+        },
+    ],
+    dropDowns: [
+        {
+            position: 'center',
+            text: 'Dropdown',
+            clickEvent: '',
+            customClass: 'center',
+            hideOnDevice: 'mobile',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            customItems: [
+                                {
+                                    text: 'Option 1',
+                                    href: '/home',
+                                    html: `<div class="custom-drop-down-item-example">
+                                                <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
+                                                    <h4>Hello, <b>WORLD</b>!</h4>
+                                                </div>
+                                                <div class="center">
+                                                    <button class="custom-class-for-a-custom-element" 
+                                                            onclick="window.open('https://github.com/')" 
+                                                            target="_blank">
+                                                        OPEN GITHUB
+                                                    </button>
+                                                </div>
+                                            </div>`
+                                }
+                            ],
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            position: 'center',
+            text: 'Dropdown 1',
+            clickEvent: '',
+            customClass: '',
+            hideOnDevice: '',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ],
+                },
+            ]
+        }
+    ],
+    avatars: [
+        {
+            position: 'right',
+            src: 'path-to-your-avatar.jpg',
+            clickEvent: '',
+            customClass: '',
+            hideOnDevice: '',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+            ]
+
+        },
+        {
+            position: '',
+            src: 'path-to-your-avatar.jpg',
+            clickEvent: '',
+            customClass: '',
+            hideOnDevice: 'desktop',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                },
+                                {
+                                    text: 'Option 5',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+            ]
+
+        }
+    ],
+    customElements: [
+        {
+            html: '<button type="button">Dropdown</button>',
+            customClass: 'custom-class-for-a-custom-element',
+            position: 'right',
+            clickEvent: 'abcd',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                },
+                                {
+                                    text: 'Option 5',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            html: '<button type="button">Custom</button>',
+            customClass: 'custom-class-for-a-custom-element',
+            position: 'right',
+            clickEvent: 'abcd',
+        }
+    ]
+};
+```
 
 ## Contributing
 Pull requests are welcome! But for major changes, please open an issue first to discuss what you would like to change.
