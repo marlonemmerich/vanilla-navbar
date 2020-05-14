@@ -1,6 +1,8 @@
 # Vanilla Navbar
 
-A simple and customizable framework agnostic Navbar, maked with pure JS and CSS.
+A simple and customizable framework agnostic Navbar, maked with pure JS and CSS. Perfect for your microfrontend projects ;)
+
+##### You can see an example [here](http://marlonemmerich.com/vanilla-navbar)
 
 ## How to?
 1. [Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this project.
