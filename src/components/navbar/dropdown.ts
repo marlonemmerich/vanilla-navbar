@@ -12,7 +12,6 @@ export class DropDown extends DropDownGeneric implements genericNavbarElementInt
         this.columns = new Array();
 
         if(dropDown.columns && dropDown.columns.length) {
-            console.log('dropDown.columns ', dropDown.columns );
             dropDown.columns.forEach(column => {
                 let columnObject = new DropDownColumn(column);
                 this.columns.push(columnObject)
