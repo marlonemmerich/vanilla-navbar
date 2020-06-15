@@ -105,6 +105,32 @@ const navbarParameters = {
                     ],
                 },
             ]
+        },
+        {
+            position: 'center',
+            text: 'Dropdown 2',
+            clickEvent: '',
+            customClass: '',
+            hideOnDevice: '',
+            columns: [
+                {
+                    contentBoxes: [
+                        {
+                            text: 'Header 2',
+                            items: [
+                                {
+                                    text: 'Option 3',
+                                    href: '/home2'
+                                },
+                                {
+                                    text: 'Option 4',
+                                    href: '/about2'
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ]
         }
     ],
     avatars: [
@@ -114,6 +140,7 @@ const navbarParameters = {
             clickEvent: '',
             customClass: '',
             hideOnDevice: '',
+            forceNavbarTop: true,
             columns: [
                 {
                     contentBoxes: [
