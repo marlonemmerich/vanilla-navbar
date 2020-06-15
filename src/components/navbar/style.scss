@@ -52,10 +52,7 @@ navbar-vanilla {
     .avatar {
         height: 35px;
         width: auto;
-        padding-left: 1px;
-        padding-right: 2px;
         border-radius: 50%;
-        padding-top: 3px;
         margin-bottom: -10px;
     }
 
@@ -64,12 +61,12 @@ navbar-vanilla {
     }
 
     .div-avatar {
-        margin-top: 8px;
+        margin-top: 12px;
         margin-bottom: 18px;
         padding-left: 12px;
         padding-right: 11px;
         .sort-down {
-            margin-bottom: 5px;
+            margin-top: -5px;
         }
     }
 
@@ -126,6 +123,76 @@ navbar-vanilla {
         text-decoration: none;
     }
 
+    // DROP DOWN
+    .drop-down-content {
+        display: none;
+        position: absolute;
+        background-color: #FFFFFF;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(10,10,10,.1);
+        z-index: 1;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .drop-down-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .drop-down-content a:hover {
+        background-color: #ddd;
+    }
+
+    .drop-down {
+        &.openned {
+            .drop-down-content {
+                display: block;;
+            }
+        }
+
+        .drop-down-content {
+            display: none;
+        }
+    }
+
+    .drop-down-content-column-box {
+        display : table-cell;
+        width: auto;
+        border-right: 1px solid #dfdfdf;
+        .content-column-header {
+            float: left;
+            padding: 15px 10px 15px 20px;
+            color: #777;
+        }
+
+        .content-column-scope {
+            padding-top: 36px;
+            margin-bottom: 10px;
+
+            a {
+                padding-left: 30px;
+                width: 224px;
+            }
+        }
+    }
+
+    .drop-down .drop-button {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+
     // DESKTOP - TABLET
     @media screen and (min-width: 768px) {
         .burguer-menu {
@@ -134,74 +201,6 @@ navbar-vanilla {
 
         .navbar-menu-mobile {
             display: hide;
-        }
-
-        .drop-down-content {
-            display: none;
-            position: absolute;
-            background-color: #FFFFFF;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(10,10,10,.1);
-            z-index: 1;
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 6px;
-        }
-
-        .drop-down-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .drop-down-content a:hover {
-            background-color: #ddd;
-        }
-
-        .drop-down {
-            &.openned {
-                .drop-down-content {
-                    display: block;;
-                }
-            }
-
-            .drop-down-content {
-                display: none;
-            }
-        }
-
-        .drop-down-content-column-box {
-            display : table-cell;
-            width: auto;
-            border-right: 1px solid #dfdfdf;
-            .content-column-header {
-                float: left;
-                padding: 15px 10px 15px 20px;
-                color: #777;
-            }
-
-            .content-column-scope {
-                padding-top: 36px;
-                margin-bottom: 10px;
-
-                a {
-                    padding-left: 30px;
-                    width: 155px;
-                }
-            }
-        }
-
-        .drop-down .drop-button {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
         }
 
         .navbar-hide-desktop {
@@ -222,7 +221,7 @@ navbar-vanilla {
 
         .navbar-menu-mobile {
             position: absolute;
-            margin-top: 58px;
+            margin-top: 59px;
             padding-top: 12px;
             display: none;
             height: auto;
@@ -239,7 +238,6 @@ navbar-vanilla {
                 box-sizing: border-box;
                 width: 100%;
                 color: rgb(54, 53, 53);
-                float: left;
                 left: 0;
                 text-align: left;
 
@@ -247,9 +245,10 @@ navbar-vanilla {
 
             .drop-down {
                 background-color: #FFFFFF;
+                float: none !important;
                 &.openned {
                     .drop-down-content {
-                        display: block;
+                        display: grid;
                     }
                 }
             }
