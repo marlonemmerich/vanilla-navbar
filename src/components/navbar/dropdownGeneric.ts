@@ -30,6 +30,7 @@ export class DropDownGeneric extends NavbarElement {
         }
 
         dropDown.htmlElementSource.onclick = function(event) {
+            const SCROLL_WIDTH = 15;
             let innerWidth = window.innerWidth;
 
             if(!dropDown.htmlElementSource.classList.contains('openned')) {
@@ -43,14 +44,15 @@ export class DropDownGeneric extends NavbarElement {
             let position = dropDown.htmlElementContentSource.getBoundingClientRect().left;
 
             if(innerWidth < (dropDownContentWidth + position)) {
-                let marginLeftToSet = (dropDownContentWidth + position) - innerWidth;
+                let marginLeftToSet = (dropDownContentWidth + position + SCROLL_WIDTH) - innerWidth;
 
                 dropDown.htmlElementContentSource.style.marginLeft = `-${marginLeftToSet}px`;
             }
 
-            if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
-                event.preventDefault();
-            }
+            // if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
+            //     console.log('PREVENINDO EVENTO!');
+            //     event.preventDefault();
+            // }
         };
     }
 };
