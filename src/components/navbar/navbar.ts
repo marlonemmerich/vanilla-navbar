@@ -10,6 +10,7 @@ import './style.scss';
 export class Navbar {
     private _htmlSource: HTMLElement;
     private _htmlMobileSpanSource: HTMLElement;
+    private _htmlBurguerMenu: HTMLElement;
     private _navbarId: string;
     private _customClass: string = '';
     private _backgroundColor: string = '';
@@ -36,6 +37,14 @@ export class Navbar {
 
     set htmlMobileSpanSource(htmlMobileSpanSource) {
         this._htmlMobileSpanSource = htmlMobileSpanSource;
+    }
+
+    get htmlBurguerMenu() {
+        return this._htmlBurguerMenu;
+    }
+
+    set htmlBurguerMenu(_htmlBurguerMenu) {
+        this._htmlBurguerMenu = _htmlBurguerMenu;
     }
 
     get navbarId() {
@@ -153,6 +162,7 @@ export class Navbar {
     buildCodeBase(): void {
         this.buildHtmlSource();
         this.buildHtmlMobileSource();
+        this.navbarClick(this);
     }
 
     buildHtmlSource(): void {
@@ -198,12 +208,14 @@ export class Navbar {
         burguerMenu.appendChild(bar2);
         burguerMenu.appendChild(bar3);
 
-        burguerMenu.onclick = () => {
-            this.htmlMobileSpanSource.classList.toggle('openned');
-            burguerMenu.classList.toggle('openned');
-        };
+        // burguerMenu.onclick = () => {
+        //     this.htmlMobileSpanSource.classList.toggle('openned');
+        //     burguerMenu.classList.toggle('openned');
+        // };
 
-        this._htmlSource.appendChild(burguerMenu);
+        this._htmlBurguerMenu = burguerMenu;
+
+        this._htmlSource.appendChild(this._htmlBurguerMenu);
     }
 
     private render(): void {
@@ -250,7 +262,7 @@ export class Navbar {
 
 
         if(parameters.customElements && parameters.customElements.length) {
-            parameters.customElements.forEach((customElement: any) => {
+            parameters.customElements.reverse().forEach((customElement: any) => {
                 let customElementObject = new CustomElement(customElement);
                 this.customElements.push(customElementObject);
 
@@ -278,4 +290,31 @@ export class Navbar {
         this.htmlMobileSpanSource.appendChild(navbarElement.htmlElementSource);
         return;
     };
+
+    navbarClick(navbar: Navbar) : void {
+        const listClick = function(e: MouseEvent) {
+            if ((!navbar._htmlSource.contains((e.target as Element)) && !navbar._htmlBurguerMenu.contains((e.target as Element))) ||
+                ((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') && (event.target as HTMLElement).getAttribute('href') !== '#')) {
+                navbar._htmlMobileSpanSource.classList.remove("openned");
+                navbar._htmlBurguerMenu.classList.remove("openned");
+                document.removeEventListener('click', listClick, true);
+            }
+        }
+
+        navbar._htmlBurguerMenu.onclick = function(event) {
+            if(!navbar._htmlMobileSpanSource.classList.contains('openned')) {
+                navbar._htmlMobileSpanSource.classList.add('openned');
+                navbar._htmlBurguerMenu.classList.add('openned');
+                document.addEventListener('click', listClick, true);
+            } else {
+                navbar._htmlMobileSpanSource.classList.remove('openned');
+                navbar._htmlBurguerMenu.classList.remove('openned');
+            }
+
+            // if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
+            //     console.log('PREVENINDO EVENTO!');
+            //     event.preventDefault();
+            // }
+        };
+    }
 }
