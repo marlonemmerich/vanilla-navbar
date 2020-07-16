@@ -36,23 +36,23 @@ export class DropDownGeneric extends NavbarElement {
             if(!dropDown.htmlElementSource.classList.contains('openned')) {
                 dropDown.htmlElementSource.classList.add('openned');
                 document.addEventListener('click', listClick, true);
+
+                let dropDownContentWidth = dropDown.htmlElementContentSource.getBoundingClientRect().width;
+                let position = dropDown.htmlElementContentSource.offsetLeft;
+
+                if(innerWidth < (dropDownContentWidth + position)) {
+                    let marginLeftToSet = (dropDownContentWidth + position + SCROLL_WIDTH) - innerWidth;
+
+                    dropDown.htmlElementContentSource.style.marginLeft = `-${marginLeftToSet}px`;
+                }
             } else {
                 dropDown.htmlElementSource.classList.remove("openned");
+                dropDown.htmlElementContentSource.style.marginLeft = '0px';
             }
 
-            let dropDownContentWidth = dropDown.htmlElementContentSource.getBoundingClientRect().width;
-            let position = dropDown.htmlElementContentSource.getBoundingClientRect().left;
-
-            if(innerWidth < (dropDownContentWidth + position)) {
-                let marginLeftToSet = (dropDownContentWidth + position + SCROLL_WIDTH) - innerWidth;
-
-                dropDown.htmlElementContentSource.style.marginLeft = `-${marginLeftToSet}px`;
+            if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
+                event.preventDefault();
             }
-
-            // if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
-            //     console.log('PREVENINDO EVENTO!');
-            //     event.preventDefault();
-            // }
         };
     }
 };
