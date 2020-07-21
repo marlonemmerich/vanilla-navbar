@@ -30,14 +30,14 @@ export class DropDownGeneric extends NavbarElement {
         }
 
         dropDown.htmlElementSource.onclick = function(event) {
-            const SCROLL_WIDTH = 15;
+            const SCROLL_WIDTH = window.innerWidth - document.documentElement.clientWidth + 10;
             let innerWidth = window.innerWidth;
 
             if(!dropDown.htmlElementSource.classList.contains('openned')) {
                 dropDown.htmlElementSource.classList.add('openned');
                 document.addEventListener('click', listClick, true);
 
-                let dropDownContentWidth = dropDown.htmlElementContentSource.getBoundingClientRect().width;
+                let dropDownContentWidth = dropDown.htmlElementContentSource.clientWidth;
                 let position = dropDown.htmlElementContentSource.offsetLeft;
 
                 if(innerWidth < (dropDownContentWidth + position)) {
