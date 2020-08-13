@@ -51,6 +51,7 @@ const navbar = new Navbar(navbarParameters);
 |position|String|No|"left", "center" or "right"|Logo alignment in navbar|
 |hideOnDevice|String|Yes|"desktop" or "mobile"|Hide logo in specific device|
 |customClass|String|Yes|Any|Custom class to the logo|
+|idElement|String|Yes|Any|Id to the logo|
 #### Item
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
@@ -60,6 +61,7 @@ const navbar = new Navbar(navbarParameters);
 |position|String|No|"left", "center" or "right"|Item alignment in navbar|
 |hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
 |customClass|String|Yes|Any|Custom class to the item|
+|idElement|String|Yes|Any|Id to the item|
 |forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
 #### DropDown
 |Parameter|Type|Optional|Possible values|Description|
@@ -69,6 +71,7 @@ const navbar = new Navbar(navbarParameters);
 |position|String|No|"left", "center" or "right"|Item alignment in navbar|
 |hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
 |customClass|String|Yes|Any|Custom class to the item|
+|idElement|String|Yes|Any|Id to the item|
 |forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
 |columns|Array|No|Array of [Column](#Column)|Array of a columns objects|
 #### Avatars
@@ -79,6 +82,7 @@ const navbar = new Navbar(navbarParameters);
 |position|String|No|"left", "center" or "right"|Item alignment in navbar|
 |hideOnDevice|String|Yes|"desktop" or "mobile"|Hide item in specific device|
 |customClass|String|Yes|Any|Custom class to the item|
+|idElement|String|Yes|Any|Id to the item|
 |forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
 |columns|Array|Yes|Array of [Column](#Column)|Array of a columns objects|
 #### customElements
@@ -89,6 +93,7 @@ const navbar = new Navbar(navbarParameters);
 |position|String|No|"left", "center" or "right"|Custom element alignment in navbar|
 |hideOnDevice|String|Yes|"desktop" or "mobile"|Hide custom element in specific device|
 |customClass|String|Yes|Any|Custom class to the item|
+|idElement|String|Yes|Any|Id to the item|
 |forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
 |columns|Array|Yes|Array of [Column](#Column)|Array of a columns objects|
 #### Column
@@ -104,16 +109,18 @@ const navbar = new Navbar(navbarParameters);
 |**customItems|Array|Yes|Array of [Dropdown Custom Items](#Dropdown-Custom-Items)|Array of a Dropdown Custom Items objects|
 *Only used if "items" is filled
 
-**Only one is accepted
+**Only one is accepted (items OR customItems)
 #### Dropdown Items
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
 |text|String|No|Any|Text to the dropdown item|
+|idElement|String|Yes|Any|Id to the item|
 |href|String|Yes|Any|URL to redirect on click|
 #### Dropdown Custom Items
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
 |text|String|No|Any|Text to the dropdown custom item|
+|idElement|String|Yes|Any|Id to the custom item|
 |href|String|Yes|Any|URL to redirect on click|
 |html|String|Yes|Any|Html of the dropdown custom item|
 
@@ -167,8 +174,8 @@ const navbarParameters = {
                                                     <h4>Hello, <b>WORLD</b>!</h4>
                                                 </div>
                                                 <div class="center">
-                                                    <button class="custom-class-for-a-custom-element" 
-                                                            onclick="window.open('https://github.com/')" 
+                                                    <button class="custom-class-for-a-custom-element"
+                                                            onclick="window.open('https://github.com/')"
                                                             target="_blank">
                                                         OPEN GITHUB
                                                     </button>
@@ -184,6 +191,7 @@ const navbarParameters = {
         {
             position: 'center',
             text: 'Dropdown 1',
+            idElement: 'id-dropdown1',
             clickEvent: '',
             customClass: '',
             hideOnDevice: '',
@@ -195,7 +203,8 @@ const navbarParameters = {
                             items: [
                                 {
                                     text: 'Option 3',
-                                    href: '/home2'
+                                    href: '/home2',
+                                    idElement: 'id-item1-dropdown1',
                                 },
                                 {
                                     text: 'Option 4',
