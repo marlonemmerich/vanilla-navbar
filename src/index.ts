@@ -11,6 +11,7 @@ const navbarParameters = {
             src: './../../assets/github-logo-white.png',
             href: '/home',
             position: 'left',
+            idElement: 'ID-ELEMENT-LOGO',
             hideOnDevice: '',
             customClass: 'custom',
             clickEvent: 'teste-a'
@@ -20,6 +21,7 @@ const navbarParameters = {
         {
             text: 'Home',
             href: '/',
+            idElement: 'home-element-id',
             position: 'center',
             customClass: 'custom'
         },
@@ -36,6 +38,7 @@ const navbarParameters = {
             clickEvent: '',
             customClass: 'center',
             hideOnDevice: 'mobile',
+            idElement: 'dropdown-id',
             columns: [
                 {
                     contentBoxes: [
@@ -49,8 +52,9 @@ const navbarParameters = {
                                                     <h4>Hello, <b>WORLD</b>!</h4>
                                                 </div>
                                                 <div class="center">
-                                                    <button class="custom-class-for-a-custom-element" 
-                                                            onclick="window.open('https://github.com/')" 
+                                                    <button id="button-custom-element"
+                                                            class="custom-class-for-a-custom-element"
+                                                            onclick="window.open('https://github.com/')"
                                                             target="_blank">
                                                         OPEN GITHUB
                                                     </button>
@@ -66,6 +70,7 @@ const navbarParameters = {
         {
             position: 'center',
             text: 'Dropdown 1',
+            idElement: 'dropdown-id-1',
             clickEvent: '',
             customClass: '',
             hideOnDevice: '',
@@ -77,7 +82,8 @@ const navbarParameters = {
                             items: [
                                 {
                                     text: 'Option 3',
-                                    href: '/home2'
+                                    href: '/home2',
+                                    idElement: 'id-element'
                                 },
                                 {
                                     text: 'Option 4',
@@ -137,6 +143,7 @@ const navbarParameters = {
         {
             position: 'right',
             src: './../../assets/avatar-dog.jpg',
+            idElement: 'avatar-id-element',
             clickEvent: '',
             customClass: '',
             hideOnDevice: '',
