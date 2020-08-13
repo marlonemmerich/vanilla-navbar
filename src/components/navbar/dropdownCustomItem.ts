@@ -23,7 +23,7 @@ export class DropDownCustomItem extends NavbarElement implements genericNavbarEl
 
     build(): void {
         let option1DropDown1 = document.createElement('div');
-        option1DropDown1.id = Utils.generateUUID();
+        option1DropDown1.id = this.idElement ? this.idElement : Utils.generateUUID();
         option1DropDown1.innerHTML = this.html;
 
         this.htmlElementSource = option1DropDown1;

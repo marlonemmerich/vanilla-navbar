@@ -13,7 +13,7 @@ export class DropDownItem extends NavbarElement {
 
     build(): void {
         let option1DropDown = document.createElement('a');
-        option1DropDown.id = Utils.generateUUID();
+        option1DropDown.id = this.idElement ? this.idElement : Utils.generateUUID();
         option1DropDown.href = this.href;
         option1DropDown.innerHTML = this.text;
 

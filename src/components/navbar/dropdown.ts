@@ -27,7 +27,7 @@ export class DropDown extends DropDownGeneric implements genericNavbarElementInt
         dropdown.className = `drop-down ${this.getElementClasses()}`;
 
         let anchorDropDown = document.createElement('a');
-        anchorDropDown.id = Utils.generateUUID();
+        anchorDropDown.id = this.idElement ? this.idElement : Utils.generateUUID();
         anchorDropDown.setAttribute('href', '#');
         anchorDropDown.className = 'center drop-down-header';
         anchorDropDown.innerHTML = this.text;

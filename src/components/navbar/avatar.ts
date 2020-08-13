@@ -27,7 +27,7 @@ export class Avatar extends DropDownGeneric implements genericNavbarElementInter
         dropdown.className = `drop-down ${this.getElementClasses()}`;
 
         const avatar = document.createElement('img');
-        avatar.id = Utils.generateUUID();
+        avatar.id = this.idElement ? this.idElement : Utils.generateUUID();
         avatar.src = this.src;
         avatar.className = "avatar";
 

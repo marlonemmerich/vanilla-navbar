@@ -54,6 +54,7 @@ export class DropDownColumnContentBox extends NavbarElement implements genericNa
             let spanContentBox = document.createElement('span');
             spanContentBox.className = 'content-column-header';
             spanContentBox.innerHTML = this.text;
+            spanContentBox.id = this.idElement ? this.idElement : Utils.generateUUID();
             divColumnContentBox.appendChild(spanContentBox);
         }
 

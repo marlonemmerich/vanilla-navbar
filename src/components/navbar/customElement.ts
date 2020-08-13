@@ -22,7 +22,7 @@ export class CustomElement extends DropDownGeneric implements genericNavbarEleme
 
     build(): void {
         const divCustomElement = document.createElement('div');
-        divCustomElement.id = Utils.generateUUID();
+        divCustomElement.id = this.idElement ? this.idElement : Utils.generateUUID();
         divCustomElement.className = `navbar-vanilla-custom-element drop-down ${this.getElementClasses()}`;
         divCustomElement.innerHTML = this.html;
 

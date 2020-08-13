@@ -22,7 +22,7 @@ export class Logo extends NavbarElement implements genericNavbarElementInterface
         anchorLogo.href = this.href;
 
         let logo = document.createElement('img');
-        logo.id = Utils.generateUUID();
+        logo.id = this.idElement ? this.idElement : Utils.generateUUID();
         logo.src = this.src;
         logo.className = 'logo';
 
