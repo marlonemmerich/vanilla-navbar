@@ -74,6 +74,7 @@ const navbar = new Navbar(navbarParameters);
 |idElement|String|Yes|Any|Id to the item|
 |forceNavbarTop|Boolean|Yes|true or false|Force or not the item in Navbar in low resolutions|
 |columns|Array|No|Array of [Column](#Column)|Array of a columns objects|
+|classesToPreventCloseOnClick|Array|Yes|Array of String|Array of classes to prevent close on click if dropdown is oppened|
 #### Avatars
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
