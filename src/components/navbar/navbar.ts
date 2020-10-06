@@ -133,6 +133,7 @@ export class Navbar {
         this.dropDowns = new Array();
         this.avatars = new Array();
         this.customElements = new Array();
+        this.navbarId = parameters.navbarId ? parameters.navbarId : undefined;
 
         this.checkStyleParameters(parameters);
 
@@ -219,7 +220,11 @@ export class Navbar {
     }
 
     private render(): void {
-        document.querySelector('navbar-vanilla').appendChild(this._htmlSource);
+        if (!this.navbarId) {
+            document.querySelector(`navbar-vanilla`).appendChild(this._htmlSource);
+            return;
+        }
+        document.querySelector(`navbar-vanilla#${this.navbarId}`).appendChild(this._htmlSource);
     }
 
     private buildElements(parameters: any): void {

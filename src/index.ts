@@ -6,6 +6,7 @@ const navbarParameters = {
     hoverColor: '#54157b;',
     color: '#FFFFFF',
     customClass: 'aaa',
+    navbarId: 'navbar-id',
     logos: [
         {
             src: './../../assets/github-logo-white.png',
