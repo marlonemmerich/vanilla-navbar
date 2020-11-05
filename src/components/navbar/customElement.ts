@@ -6,7 +6,7 @@ import {genericNavbarElementInterface} from './navbar-element';
 export class CustomElement extends DropDownGeneric implements genericNavbarElementInterface {
     html: string;
 
-    constructor(dropDown: CustomElement) {
+    constructor(dropDown: Partial<CustomElement>) {
         super(dropDown);
         Object.assign(this, dropDown);
         this.columns = new Array();

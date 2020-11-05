@@ -1,5 +1,3 @@
-import Utils from "../../utils/utils";
-
 export interface genericNavbarElementInterface {
     build(): void;
 }
@@ -69,7 +67,7 @@ export class NavbarElement {
         this._customClass = customClass;
     }
 
-    constructor(element: genericNavbarElementInterface) {
+    constructor(element: Partial<genericNavbarElementInterface>) {
         Object.assign(this, element);
     }
 

@@ -5,7 +5,7 @@ export class DropDownItem extends NavbarElement {
     href: string;
     text: string;
 
-    constructor(dropDown: DropDownItem) {
+    constructor(dropDown: Partial<DropDownItem>) {
         super(dropDown);
         Object.assign(this, dropDown);
         this.build();

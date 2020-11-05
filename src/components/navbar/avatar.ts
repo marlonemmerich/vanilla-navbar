@@ -5,15 +5,14 @@ import {genericNavbarElementInterface} from './navbar-element';
 
 export class Avatar extends DropDownGeneric implements genericNavbarElementInterface {
     src: string;
-    text: string;
 
-    constructor(dropDown: Avatar) {
-        super(dropDown);
-        Object.assign(this, dropDown);
+    constructor(avatar: Partial<Avatar>) {
+        super(avatar);
+        Object.assign(this, avatar);
         this.columns = new Array();
 
-        if(dropDown.columns) {
-            dropDown.columns.forEach(column => {
+        if(avatar.columns) {
+            avatar.columns.forEach(column => {
                 let columnObject = new DropDownColumn(column);
                 this.columns.push(columnObject)
             });

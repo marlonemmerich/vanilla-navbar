@@ -6,7 +6,7 @@ export class Item extends NavbarElement {
     src: string;
     text: string;
 
-    constructor(item: Item) {
+    constructor(item: Partial<Item>) {
         super(item);
         Object.assign(this, item);
         this.build();

@@ -17,7 +17,7 @@ export class Navbar {
     private _hoverColor: string = '';
     private _color: string = 'white';
 
-    private _logos: Array<Logo>;
+    private _logos: Array<Partial<Logo>>;
     private _items: Array<Item>;
     private _dropdowns: Array<DropDown>;
     private _avatars: Array<Avatar>;
@@ -315,11 +315,6 @@ export class Navbar {
                 navbar._htmlMobileSpanSource.classList.remove('openned');
                 navbar._htmlBurguerMenu.classList.remove('openned');
             }
-
-            // if((event.target as HTMLElement) && (event.target as HTMLElement).getAttribute('href') === '#') {
-            //     console.log('PREVENINDO EVENTO!');
-            //     event.preventDefault();
-            // }
         };
     }
 }

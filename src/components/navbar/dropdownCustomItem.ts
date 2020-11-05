@@ -7,7 +7,7 @@ export class DropDownCustomItem extends NavbarElement implements genericNavbarEl
     src: string;
     private _html: string;
 
-    constructor(dropDown: DropDownCustomItem) {
+    constructor(dropDown: Partial<DropDownCustomItem>) {
         super(dropDown);
         Object.assign(this, dropDown);
         this.build();

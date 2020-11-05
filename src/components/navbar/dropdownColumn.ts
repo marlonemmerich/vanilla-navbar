@@ -7,15 +7,17 @@ export class DropDownColumn extends NavbarElement implements genericNavbarElemen
     private _contentBoxes: Array<DropDownColumnContentBox>;
     text: string;
 
-    constructor(dropDownColumn: DropDownColumn) {
+    constructor(dropDownColumn: Partial<DropDownColumn>) {
         super(dropDownColumn);
         Object.assign(this, dropDownColumn);
         this.contentBoxes = Array();
 
-        dropDownColumn.contentBoxes.forEach(contentBox => {
-            let contentBoxObject = new DropDownColumnContentBox(contentBox);
-            this.contentBoxes.push(contentBoxObject);
-        });
+        if (dropDownColumn.contentBoxes) {
+            dropDownColumn.contentBoxes.forEach(contentBox => {
+                let contentBoxObject = new DropDownColumnContentBox(contentBox);
+                this.contentBoxes.push(contentBoxObject);
+            });
+        }
 
         this.build();
     }

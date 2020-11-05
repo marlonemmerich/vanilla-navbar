@@ -6,7 +6,7 @@ export class Logo extends NavbarElement implements genericNavbarElementInterface
     src: string;
     href: string = '/';
 
-    constructor(logo: any) {
+    constructor(logo: Partial<Logo>) {
         super(logo);
         this.forceNavbarTop = true;
         Object.assign(this, logo);

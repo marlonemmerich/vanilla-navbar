@@ -2,7 +2,7 @@ import {NavbarElement} from './navbar-element';
 import {DropDownColumn} from './dropdownColumn';
 
 export class DropDownGeneric extends NavbarElement {
-    private _columns: Array<DropDownColumn>;
+    private _columns: Array<Partial<DropDownColumn>>;
     private _classesToPreventCloseOnClick: Array<String>;
     private _htmlElementContentSource: HTMLElement;
 
@@ -35,8 +35,6 @@ export class DropDownGeneric extends NavbarElement {
             return false;
         }
 
-        console.log('event', event);
-
         var arrayClassClickedElement = (event.target as Element).className.split(' ');
 
         for(let indexArrayClassesClickedElmnt = 0; indexArrayClassesClickedElmnt < arrayClassClickedElement.length; indexArrayClassesClickedElmnt++) {
@@ -51,12 +49,17 @@ export class DropDownGeneric extends NavbarElement {
     }
 
     dropDownClick(dropDown: DropDownGeneric) : void {
-        const listClick = (e: MouseEvent) => {
-            if(!this.preventClose(e)) {
-                if (!dropDown.htmlElementSource.contains((e.target as Element))) {
+        const listNextClick = (e: MouseEvent) => {
+            /*
+                onclick event will run only with the click occurs in the dropdown
+                this verification will check the next click only if is not in the dropdown
+            */
+            if (!dropDown.htmlElementSource.contains((e.target as Element))) {
+                if(!this.preventClose(e)) {
                     dropDown.htmlElementSource.classList.remove("openned");
+                    dropDown.htmlElementContentSource.style.marginLeft = '0px';
+                    document.removeEventListener('click', listNextClick, true);
                 }
-                document.removeEventListener('click', listClick, true);
             }
         }
 
@@ -66,7 +69,7 @@ export class DropDownGeneric extends NavbarElement {
 
             if(!dropDown.htmlElementSource.classList.contains('openned')) {
                 dropDown.htmlElementSource.classList.add('openned');
-                document.addEventListener('click', listClick, true);
+                document.addEventListener('click', listNextClick, true);
 
                 let dropDownContentWidth = dropDown.htmlElementContentSource.clientWidth;
                 let position = dropDown.htmlElementContentSource.offsetLeft;
