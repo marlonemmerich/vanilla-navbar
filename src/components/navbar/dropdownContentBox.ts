@@ -1,71 +1,77 @@
-import Utils from "../../utils/utils";
-import {NavbarElement} from './navbar-element';
-import {DropDownItem} from './dropdownItem';
-import {DropDownCustomItem} from './dropdownCustomItem';
-import {genericNavbarElementInterface} from './navbar-element';
+import Utils from '../../utils/utils';
+import { NavbarElement, genericNavbarElement } from './navbar-element';
+import DropDownItem from './dropdownItem';
+import DropDownCustomItem from './dropdownCustomItem';
 
-export class DropDownColumnContentBox extends NavbarElement implements genericNavbarElementInterface {
+export default class DropDownColumnContentBox extends NavbarElement
+  implements genericNavbarElement {
     text: string;
-    private _items: Array<DropDownItem|DropDownCustomItem>;
+
+    private _items: Array<Partial<DropDownItem|DropDownCustomItem>>;
+
     private _withCustomItems: boolean = false;
 
     constructor(contentBoxes: any) {
-        super(contentBoxes);
-        Object.assign(this, contentBoxes);
-        this.items = Array();
+      super(contentBoxes);
+      Object.assign(this, contentBoxes);
+      this.items = [];
 
-        if(contentBoxes.items && contentBoxes.items.length) {
-            contentBoxes.items.forEach((item: any) => {
-                let itemObject = new DropDownItem(item);
-                this.items.push(itemObject);
-            });
-        } else if(contentBoxes.customItems && contentBoxes.customItems) {
-            contentBoxes.customItems.forEach((customItems: any) => {
-                let customItemObject = new DropDownCustomItem(customItems);
-                this.items.push(customItemObject);
-                this.withCustomItems = true;
-            });
-        }
+      if (contentBoxes.items && contentBoxes.items.length) {
+        contentBoxes.items.forEach((item: any) => {
+          const itemObject = new DropDownItem(item);
+          this.items.push(itemObject);
+        });
+      } else if (contentBoxes.customItems && contentBoxes.customItems) {
+        contentBoxes.customItems.forEach((customItems: any) => {
+          const customItemObject = new DropDownCustomItem(customItems);
+          this.items.push(customItemObject);
+          this.withCustomItems = true;
+        });
+      }
 
-        this.build();
+      this.build();
     }
 
     get items() {
-        return this._items;
+      // eslint-disable-next-line no-underscore-dangle
+      return this._items;
     }
 
     set items(items) {
-        this._items = items;
+      // eslint-disable-next-line no-underscore-dangle
+      this._items = items;
     }
 
     get withCustomItems() {
-        return this._withCustomItems;
+      // eslint-disable-next-line no-underscore-dangle
+      return this._withCustomItems;
     }
 
     set withCustomItems(withCustomItems) {
-        this._withCustomItems = withCustomItems;
+      // eslint-disable-next-line no-underscore-dangle
+      this._withCustomItems = withCustomItems;
     }
 
     build(): void {
-        let divColumnContentBox = document.createElement('div');
-        divColumnContentBox.id = Utils.generateUUID();
+      const divColumnContentBox = document.createElement('div');
+      divColumnContentBox.id = Utils.generateUUID();
 
-        if(this.text && !this.withCustomItems) {
-            let spanContentBox = document.createElement('span');
-            spanContentBox.className = 'content-column-header';
-            spanContentBox.innerHTML = this.text;
-            spanContentBox.id = this.idElement ? this.idElement : Utils.generateUUID();
-            divColumnContentBox.appendChild(spanContentBox);
-        }
+      if (this.text && !this.withCustomItems) {
+        const spanContentBox = document.createElement('span');
+        spanContentBox.className = 'content-column-header';
+        spanContentBox.innerHTML = this.text;
+        spanContentBox.id = this.idElement ? this.idElement : Utils.generateUUID();
+        divColumnContentBox.appendChild(spanContentBox);
+      }
 
-        let spanScope = document.createElement('div');
-        spanScope.className = 'content-column-scope';
+      const spanScope = document.createElement('div');
+      spanScope.className = 'content-column-scope';
 
-        this.items.forEach(item => {
-            spanScope.appendChild(item.htmlElementSource)
-        });
+      this.items.forEach((item) => {
+        spanScope.appendChild(item.htmlElementSource);
+      });
 
-        divColumnContentBox.appendChild(spanScope);
-        this.htmlElementSource = divColumnContentBox;
+      divColumnContentBox.appendChild(spanScope);
+      this.htmlElementSource = divColumnContentBox;
     }
-};
+}

@@ -1,54 +1,53 @@
-import {Navbar} from './components/navbar/navbar';
+import Navbar from './components/navbar/navbar';
 import './index-style/index-style.css';
 
 const navbarParameters = {
-    backgroundColor: '#6a1b9a',
-    hoverColor: '#54157b;',
-    color: '#FFFFFF',
-    customClass: 'aaa',
-    navbarId: 'navbar-id',
-    logos: [
+  backgroundColor: '#6a1b9a',
+  hoverColor: '#54157b;',
+  color: '#FFFFFF',
+  customClass: 'aaa',
+  navbarId: 'navbar-id',
+  logos: [
+    {
+      src: './../../assets/github-logo-white.png',
+      href: '/home',
+      position: 'left',
+      hideOnDevice: '',
+      customClass: 'custom',
+      clickEvent: 'teste-a',
+    },
+  ],
+  items: [
+    {
+      text: 'Home',
+      href: '/',
+      idElement: 'home-element-id',
+      position: 'center',
+      customClass: 'custom',
+    },
+    {
+      text: 'About',
+      href: '/about',
+      position: 'center',
+    },
+  ],
+  dropDowns: [
+    {
+      position: 'center',
+      text: 'Dropdown',
+      clickEvent: '',
+      customClass: 'center',
+      hideOnDevice: 'mobile',
+      idElement: 'dropdown-id',
+      columns: [
         {
-            src: './../../assets/github-logo-white.png',
-            href: '/home',
-            position: 'left',
-            idElement: 'ID-ELEMENT-LOGO',
-            hideOnDevice: '',
-            customClass: 'custom',
-            clickEvent: 'teste-a'
-        },
-    ],
-    items: [
-        {
-            text: 'Home',
-            href: '/',
-            idElement: 'home-element-id',
-            position: 'center',
-            customClass: 'custom'
-        },
-        {
-            text: 'About',
-            href: '/about',
-            position: 'center'
-        },
-    ],
-    dropDowns: [
-        {
-            position: 'center',
-            text: 'Dropdown',
-            clickEvent: '',
-            customClass: 'center',
-            hideOnDevice: 'mobile',
-            idElement: 'dropdown-id',
-            columns: [
+          contentBoxes: [
+            {
+              customItems: [
                 {
-                    contentBoxes: [
-                        {
-                            customItems: [
-                                {
-                                    text: 'Option 1',
-                                    href: '/home',
-                                    html: `<div class="custom-drop-down-item-example">
+                  text: 'Option 1',
+                  href: '/home',
+                  html: `<div class="custom-drop-down-item-example">
                                                 <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
                                                     <h4>Hello, <b>WORLD</b>!</h4>
                                                 </div>
@@ -60,275 +59,276 @@ const navbarParameters = {
                                                         OPEN GITHUB
                                                     </button>
                                                 </div>
-                                            </div>`
-                                }
-                            ],
-                        },
-                    ]
+                                            </div>`,
                 },
-            ]
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      position: 'center',
+      text: 'Dropdown 1',
+      idElement: 'dropdown-id-1',
+      clickEvent: '',
+      customClass: '',
+      hideOnDevice: '',
+      columns: [
+        {
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                  idElement: 'id-element',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
         },
         {
-            position: 'center',
-            text: 'Dropdown 1',
-            idElement: 'dropdown-id-1',
-            clickEvent: '',
-            customClass: '',
-            hideOnDevice: '',
-            columns: [
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2',
-                                    idElement: 'id-element'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 3',
+                  href: '/home2',
                 },
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ],
+                  text: 'Option 4',
+                  href: '/about2',
                 },
-            ]
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      position: 'center',
+      text: 'Dropdown 2',
+      clickEvent: '',
+      customClass: '',
+      hideOnDevice: '',
+      columns: [
+        {
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  avatars: [
+    {
+      position: 'right',
+      src: './../../assets/avatar-dog.jpg',
+      idElement: 'avatar-id-element',
+      clickEvent: '',
+      customClass: '',
+      hideOnDevice: '',
+      forceNavbarTop: true,
+      columns: [
+        {
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
         },
         {
-            position: 'center',
-            text: 'Dropdown 2',
-            clickEvent: '',
-            customClass: '',
-            hideOnDevice: '',
-            columns: [
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
-                }
-            ]
-        }
-    ],
-    avatars: [
-        {
-            position: 'right',
-            src: './../../assets/avatar-dog.jpg',
-            idElement: 'avatar-id-element',
-            clickEvent: '',
-            customClass: '',
-            hideOnDevice: '',
-            forceNavbarTop: true,
-            columns: [
-                {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 3',
+                  href: '/home2',
                 },
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 4',
+                  href: '/about2',
                 },
-            ]
+              ],
+            },
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
+        },
+      ],
 
+    },
+    {
+      position: '',
+      src: './../../assets/avatar-dog.jpg',
+      clickEvent: '',
+      customClass: '',
+      hideOnDevice: 'desktop',
+      columns: [
+        {
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
         },
         {
-            position: '',
-            src: './../../assets/avatar-dog.jpg',
-            clickEvent: '',
-            customClass: '',
-            hideOnDevice: 'desktop',
-            columns: [
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 3',
+                  href: '/home2',
                 },
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                },
-                                {
-                                    text: 'Option 5',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 4',
+                  href: '/about2',
                 },
-            ]
+                {
+                  text: 'Option 5',
+                  href: '/about2',
+                },
+              ],
+            },
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
+        },
+      ],
 
-        }
-    ],
-    customElements: [
+    },
+  ],
+  customElements: [
+    {
+      html: '<button type="button">Dropdown</button>',
+      customClass: 'custom-class-for-a-custom-element',
+      position: 'right',
+      clickEvent: 'abcd',
+      columns: [
         {
-            html: '<button type="button">Dropdown</button>',
-            customClass: 'custom-class-for-a-custom-element',
-            position: 'right',
-            clickEvent: 'abcd',
-            columns: [
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 3',
+                  href: '/home2',
                 },
                 {
-                    contentBoxes: [
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                },
-                                {
-                                    text: 'Option 5',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                        {
-                            text: 'Header 2',
-                            items: [
-                                {
-                                    text: 'Option 3',
-                                    href: '/home2'
-                                },
-                                {
-                                    text: 'Option 4',
-                                    href: '/about2'
-                                }
-                            ]
-                        },
-                    ]
+                  text: 'Option 4',
+                  href: '/about2',
                 },
-            ]
+              ],
+            },
+          ],
         },
         {
-            html: '<button type="button">Custom</button>',
-            customClass: 'custom-class-for-a-custom-element',
-            position: 'right',
-            clickEvent: 'abcd',
-        }
-    ]
+          contentBoxes: [
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+                {
+                  text: 'Option 5',
+                  href: '/about2',
+                },
+              ],
+            },
+            {
+              text: 'Header 2',
+              items: [
+                {
+                  text: 'Option 3',
+                  href: '/home2',
+                },
+                {
+                  text: 'Option 4',
+                  href: '/about2',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      html: '<button type="button">Custom</button>',
+      customClass: 'custom-class-for-a-custom-element',
+      position: 'right',
+      clickEvent: 'abcd',
+    },
+  ],
 };
 
+// eslint-disable-next-line no-unused-vars
 const navbar = new Navbar(navbarParameters);

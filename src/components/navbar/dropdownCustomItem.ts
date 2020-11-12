@@ -1,32 +1,35 @@
-import Utils from "../../utils/utils";
-import {NavbarElement} from './navbar-element';
-import {genericNavbarElementInterface} from './navbar-element';
+import Utils from '../../utils/utils';
+import { NavbarElement, genericNavbarElement } from './navbar-element';
 
-export class DropDownCustomItem extends NavbarElement implements genericNavbarElementInterface {
+export default class DropDownCustomItem extends NavbarElement implements genericNavbarElement {
     href: string;
+
     src: string;
+
     private _html: string;
 
     constructor(dropDown: Partial<DropDownCustomItem>) {
-        super(dropDown);
-        Object.assign(this, dropDown);
-        this.build();
+      super(dropDown);
+      Object.assign(this, dropDown);
+      this.build();
     }
 
     get html() {
-        return this._html;
+      // eslint-disable-next-line no-underscore-dangle
+      return this._html;
     }
 
     set html(html) {
-        this._html = html;
+      // eslint-disable-next-line no-underscore-dangle
+      this._html = html;
     }
 
     build(): void {
-        let option1DropDown1 = document.createElement('div');
-        option1DropDown1.id = this.idElement ? this.idElement : Utils.generateUUID();
-        option1DropDown1.innerHTML = this.html;
+      const option1DropDown1 = document.createElement('div');
+      option1DropDown1.id = this.idElement ? this.idElement : Utils.generateUUID();
+      option1DropDown1.innerHTML = this.html;
 
-        this.htmlElementSource = option1DropDown1;
-        this.insertOnClickEvent(this);
+      this.htmlElementSource = option1DropDown1;
+      this.insertOnClickEvent(this);
     }
-};
+}

@@ -1,35 +1,35 @@
-import Utils from "../../utils/utils";
-import {NavbarElement} from './navbar-element';
-import {genericNavbarElementInterface} from './navbar-element';
+import Utils from '../../utils/utils';
+import { NavbarElement, genericNavbarElement } from './navbar-element';
 
-export class Logo extends NavbarElement implements genericNavbarElementInterface{
+export default class Logo extends NavbarElement implements genericNavbarElement {
     src: string;
+
     href: string = '/';
 
     constructor(logo: Partial<Logo>) {
-        super(logo);
-        this.forceNavbarTop = true;
-        Object.assign(this, logo);
-        this.build();
+      super(logo);
+      this.forceNavbarTop = true;
+      Object.assign(this, logo);
+      this.build();
     }
 
     build(): void {
-        let divLogo = document.createElement('div');
-        divLogo.id = Utils.generateUUID();
-        divLogo.className = `div-logo ${this.getElementClasses()}`;
+      const divLogo = document.createElement('div');
+      divLogo.id = Utils.generateUUID();
+      divLogo.className = `div-logo ${this.getElementClasses()}`;
 
-        let anchorLogo = document.createElement('a');
-        anchorLogo.href = this.href;
+      const anchorLogo = document.createElement('a');
+      anchorLogo.href = this.href;
 
-        let logo = document.createElement('img');
-        logo.id = this.idElement ? this.idElement : Utils.generateUUID();
-        logo.src = this.src;
-        logo.className = 'logo';
+      const logo = document.createElement('img');
+      logo.id = this.idElement ? this.idElement : Utils.generateUUID();
+      logo.src = this.src;
+      logo.className = 'logo';
 
-        anchorLogo.appendChild(logo);
+      anchorLogo.appendChild(logo);
 
-        divLogo.appendChild(anchorLogo);
-        this.htmlElementSource = divLogo;
-        this.insertOnClickEvent(this);
+      divLogo.appendChild(anchorLogo);
+      this.htmlElementSource = divLogo;
+      this.insertOnClickEvent(this);
     }
-};
+}

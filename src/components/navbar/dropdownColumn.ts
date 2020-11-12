@@ -1,48 +1,48 @@
-import Utils from "../../utils/utils";
-import {NavbarElement} from './navbar-element';
-import {DropDownColumnContentBox} from './dropdownContentBox';
-import {genericNavbarElementInterface} from './navbar-element';
+import Utils from '../../utils/utils';
+import { NavbarElement, genericNavbarElement } from './navbar-element';
+import DropDownColumnContentBox from './dropdownContentBox';
 
-export class DropDownColumn extends NavbarElement implements genericNavbarElementInterface{
-    private _contentBoxes: Array<DropDownColumnContentBox>;
-    text: string;
+export default class DropDownColumn extends NavbarElement implements genericNavbarElement {
+    private _contentBoxes: Array<Partial<DropDownColumnContentBox>>;
 
     constructor(dropDownColumn: Partial<DropDownColumn>) {
-        super(dropDownColumn);
-        Object.assign(this, dropDownColumn);
-        this.contentBoxes = Array();
+      super(dropDownColumn);
+      Object.assign(this, dropDownColumn);
+      this.contentBoxes = [];
 
-        if (dropDownColumn.contentBoxes) {
-            dropDownColumn.contentBoxes.forEach(contentBox => {
-                let contentBoxObject = new DropDownColumnContentBox(contentBox);
-                this.contentBoxes.push(contentBoxObject);
-            });
-        }
+      if (dropDownColumn.contentBoxes) {
+        dropDownColumn.contentBoxes.forEach((contentBox) => {
+          const contentBoxObject = new DropDownColumnContentBox(contentBox);
+          this.contentBoxes.push(contentBoxObject);
+        });
+      }
 
-        this.build();
+      this.build();
     }
 
     get contentBoxes() {
-        return this._contentBoxes;
+      // eslint-disable-next-line no-underscore-dangle
+      return this._contentBoxes;
     }
 
     set contentBoxes(contentBoxes) {
-        this._contentBoxes = contentBoxes;
+      // eslint-disable-next-line no-underscore-dangle
+      this._contentBoxes = contentBoxes;
     }
 
     build(): void {
-        let columnDropDownContent = document.createElement('span');
-        columnDropDownContent.id = Utils.generateUUID();
-        columnDropDownContent.className = 'drop-down-content-column-box';
+      const columnDropDownContent = document.createElement('span');
+      columnDropDownContent.id = Utils.generateUUID();
+      columnDropDownContent.className = 'drop-down-content-column-box';
 
-        let columnDiv = document.createElement('div');
-        columnDiv.id = Utils.generateUUID();
+      const columnDiv = document.createElement('div');
+      columnDiv.id = Utils.generateUUID();
 
-        this.contentBoxes.forEach(contentBox => {
-            columnDiv.appendChild(contentBox.htmlElementSource);
-        });
+      this.contentBoxes.forEach((contentBox) => {
+        columnDiv.appendChild(contentBox.htmlElementSource);
+      });
 
-        columnDropDownContent.appendChild(columnDiv);
-        this.htmlElementSource = columnDropDownContent;
+      columnDropDownContent.appendChild(columnDiv);
+      this.htmlElementSource = columnDropDownContent;
     }
-};
+}

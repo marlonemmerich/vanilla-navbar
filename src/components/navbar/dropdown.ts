@@ -1,57 +1,57 @@
-import Utils from "../../utils/utils";
-import {DropDownColumn} from './dropdownColumn';
-import {DropDownGeneric} from './dropdownGeneric';
-import {genericNavbarElementInterface} from './navbar-element';
+import Utils from '../../utils/utils';
+import DropDownColumn from './dropdownColumn';
+import DropDownGeneric from './dropdownGeneric';
+import { genericNavbarElement } from './navbar-element';
 
-export class DropDown extends DropDownGeneric implements genericNavbarElementInterface {
+export default class DropDown extends DropDownGeneric implements genericNavbarElement {
     text: string;
 
     constructor(dropDown: Partial<DropDown>) {
-        super(dropDown);
-        Object.assign(this, dropDown);
-        this.columns = new Array();
+      super(dropDown);
+      Object.assign(this, dropDown);
+      this.columns = [];
 
-        if(dropDown.columns && dropDown.columns.length) {
-            dropDown.columns.forEach(column => {
-                let columnObject = new DropDownColumn(column);
-                this.columns.push(columnObject)
-            });
-        }
+      if (dropDown.columns && dropDown.columns.length) {
+        dropDown.columns.forEach((column) => {
+          const columnObject = new DropDownColumn(column);
+          this.columns.push(columnObject);
+        });
+      }
 
-        this.build();
+      this.build();
     }
 
     build(): void {
-        let dropdown = document.createElement('div');
-        dropdown.id = Utils.generateUUID();
-        dropdown.className = `drop-down ${this.getElementClasses()}`;
+      const dropdown = document.createElement('div');
+      dropdown.id = Utils.generateUUID();
+      dropdown.className = `drop-down ${this.getElementClasses()}`;
 
-        let anchorDropDown = document.createElement('a');
-        anchorDropDown.id = this.idElement ? this.idElement : Utils.generateUUID();
-        anchorDropDown.setAttribute('href', '#');
-        anchorDropDown.className = 'center drop-down-header';
-        anchorDropDown.innerHTML = this.text;
+      const anchorDropDown = document.createElement('a');
+      anchorDropDown.id = this.idElement ? this.idElement : Utils.generateUUID();
+      anchorDropDown.setAttribute('href', '#');
+      anchorDropDown.className = 'center drop-down-header';
+      anchorDropDown.innerHTML = this.text;
 
-        let arrow = document.createElement('div');
-        arrow.id = Utils.generateUUID();
-        arrow.className = 'sort-down';
-        anchorDropDown.appendChild(arrow);
+      const arrow = document.createElement('div');
+      arrow.id = Utils.generateUUID();
+      arrow.className = 'sort-down';
+      anchorDropDown.appendChild(arrow);
 
-        let dropDownContent = document.createElement('div');
-        dropDownContent.id = Utils.generateUUID();
-        dropDownContent.className = 'drop-down-content';
+      const dropDownContent = document.createElement('div');
+      dropDownContent.id = Utils.generateUUID();
+      dropDownContent.className = 'drop-down-content';
 
-        this.columns.forEach(column => {
-            dropDownContent.appendChild(column.htmlElementSource);
-        });
+      this.columns.forEach((column) => {
+        dropDownContent.appendChild(column.htmlElementSource);
+      });
 
-        dropdown.appendChild(anchorDropDown);
-        dropdown.appendChild(dropDownContent);
+      dropdown.appendChild(anchorDropDown);
+      dropdown.appendChild(dropDownContent);
 
-        this.htmlElementContentSource = dropDownContent;
+      this.htmlElementContentSource = dropDownContent;
 
-        this.htmlElementSource = dropdown;
-        this.insertOnClickEvent(this);
-        this.dropDownClick(this);
+      this.htmlElementSource = dropdown;
+      this.insertOnClickEvent(this);
+      this.dropDownClick(this);
     }
-};
+}
