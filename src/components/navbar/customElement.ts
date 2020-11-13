@@ -1,4 +1,4 @@
-import Utils from '../../utils/utils';
+import { v4 as uuidv4 } from 'uuid';
 import DropDownColumn from './dropdownColumn';
 import DropDownGeneric from './dropdownGeneric';
 import { genericNavbarElement } from './navbar-element';
@@ -22,18 +22,18 @@ export default class CustomElement extends DropDownGeneric implements genericNav
 
     build(): void {
       const divCustomElement = document.createElement('div');
-      divCustomElement.id = this.idElement ? this.idElement : Utils.generateUUID();
+      divCustomElement.id = this.idElement ? this.idElement : uuidv4();
       divCustomElement.className = `navbar-vanilla-custom-element drop-down ${this.getElementClasses()}`;
       divCustomElement.innerHTML = this.html;
 
       if (this.columns.length) {
         const arrow = document.createElement('div');
-        arrow.id = Utils.generateUUID();
+        arrow.id = uuidv4();
         arrow.className = 'sort-down';
         divCustomElement.appendChild(arrow);
 
         const dropDownContent = document.createElement('div');
-        dropDownContent.id = Utils.generateUUID();
+        dropDownContent.id = uuidv4();
         dropDownContent.className = 'drop-down-content';
 
         this.columns.forEach((column) => {

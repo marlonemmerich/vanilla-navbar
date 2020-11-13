@@ -1,4 +1,4 @@
-import Utils from '../../utils/utils';
+import { v4 as uuidv4 } from 'uuid';
 import { NavbarElement } from './navbar-element';
 
 export default class Item extends NavbarElement {
@@ -16,7 +16,7 @@ export default class Item extends NavbarElement {
 
     build(): void {
       const item = document.createElement('a');
-      item.id = this.idElement ? this.idElement : Utils.generateUUID();
+      item.id = this.idElement ? this.idElement : uuidv4();
       item.href = this.href;
       item.className = `${this.getElementClasses()}`;
       item.innerHTML = this.text;

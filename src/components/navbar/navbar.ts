@@ -1,4 +1,4 @@
-import Utils from '../../utils/utils';
+import { v4 as uuidv4 } from 'uuid';
 import { NavbarElement } from './navbar-element';
 import Logo from './logo';
 import Item from './item';
@@ -205,7 +205,7 @@ export default class Navbar {
 
     buildHtmlSource(): void {
       const divNavBar = document.createElement('div');
-      divNavBar.id = Utils.generateUUID();
+      divNavBar.id = uuidv4();
       divNavBar.className = `body ${this.customClass}`;
       divNavBar.style.backgroundColor = this.backgroundColor;
       divNavBar.style.color = this.color;
@@ -220,7 +220,7 @@ export default class Navbar {
 
     buildHtmlMobileSource(): void {
       const spanMobile = document.createElement('span');
-      spanMobile.id = Utils.generateUUID();
+      spanMobile.id = uuidv4();
       spanMobile.className = 'navbar-menu-mobile';
 
       this.htmlMobileSpanSource = spanMobile;
