@@ -3,7 +3,32 @@ import DropDown from '../../../src/components/navbar/dropdown';
 import DropDownColumn from '../../../src/components/navbar/dropdownColumn';
 
 describe('Avatar', () => {
-  const MOCK_AVATAR = {
+  const CUSTOM_ID = 'custom-id';
+  const SOURCE_IMAGE = 'source-img';
+
+  const MOCK_AVATAR_WITHOUT_ID = {
+    src: SOURCE_IMAGE,
+    columns: [
+      {
+        contentBoxes: [
+          {
+            text: 'First contentBox',
+          },
+        ],
+      },
+      {
+        contentBoxes: [
+          {
+            text: 'Second contentBox',
+          },
+        ],
+      },
+    ],
+  };
+
+  const MOCK_AVATAR_WITH_ID = {
+    idElement: CUSTOM_ID,
+    src: SOURCE_IMAGE,
     columns: [
       {
         contentBoxes: [
@@ -36,8 +61,8 @@ describe('Avatar', () => {
       expect(Avatar.prototype.build).toHaveBeenCalled();
     });
 
-    test('Need to have the correct parameters', () => {
-      const avatar = new Avatar(MOCK_AVATAR);
+    test('with custom id - Need to have the correct parameters', () => {
+      const avatar = new Avatar(MOCK_AVATAR_WITH_ID);
 
       expect(avatar.columns.length).toBe(2);
 
@@ -46,6 +71,24 @@ describe('Avatar', () => {
 
       expect(avatar.columns[1].contentBoxes[0].text).toBe('Second contentBox');
       expect(avatar.columns[1] instanceof DropDownColumn).toBe(true);
+
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).id).toBe(CUSTOM_ID);
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).toBe(SOURCE_IMAGE);
+    });
+
+    test('Without custom id - Need to have the correct parameters', () => {
+      const avatar = new Avatar(MOCK_AVATAR_WITHOUT_ID);
+
+      expect(avatar.columns.length).toBe(2);
+
+      expect(avatar.columns[0].contentBoxes[0].text).toBe('First contentBox');
+      expect(avatar.columns[0] instanceof DropDownColumn).toBe(true);
+
+      expect(avatar.columns[1].contentBoxes[0].text).toBe('Second contentBox');
+      expect(avatar.columns[1] instanceof DropDownColumn).toBe(true);
+
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).id).not.toBe(CUSTOM_ID);
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).toBe(SOURCE_IMAGE);
     });
   });
   describe('Build', () => {
@@ -60,7 +103,7 @@ describe('Avatar', () => {
     });
 
     test('With columns - htmlElementSource need to have correct elements', () => {
-      const avatar = new Avatar(MOCK_AVATAR);
+      const avatar = new Avatar(MOCK_AVATAR_WITHOUT_ID);
       expect(avatar.htmlElementSource.childElementCount).toBe(2);
       expect(avatar.htmlElementSource.getElementsByClassName('avatar').length).toBe(1);
 
