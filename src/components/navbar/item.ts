@@ -4,8 +4,6 @@ import { NavbarElement } from './navbar-element';
 export default class Item extends NavbarElement {
     href: string;
 
-    src: string;
-
     text: string;
 
     constructor(item: Partial<Item>) {
