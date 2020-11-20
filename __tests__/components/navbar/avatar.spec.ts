@@ -7,7 +7,8 @@ describe('Avatar', () => {
   const SOURCE_IMAGE = 'source-img';
 
   const MOCK_AVATAR_WITHOUT_ID = {
-    src: SOURCE_IMAGE,
+    idElement: undefined,
+    src: undefined,
     columns: [
       {
         contentBoxes: [
@@ -28,7 +29,7 @@ describe('Avatar', () => {
 
   const MOCK_AVATAR_WITH_ID = {
     idElement: CUSTOM_ID,
-    src: SOURCE_IMAGE,
+    src: undefined,
     columns: [
       {
         contentBoxes: [
@@ -61,37 +62,67 @@ describe('Avatar', () => {
       expect(Avatar.prototype.build).toHaveBeenCalled();
     });
 
-    test('with custom id - Need to have the correct parameters', () => {
-      const avatar = new Avatar(MOCK_AVATAR_WITH_ID);
+    test('with src and columns - Need to have the correct parameters', () => {
+      const MOCK_PARAMETERS_AVATAR = Object.assign(MOCK_AVATAR_WITH_ID);
+      MOCK_PARAMETERS_AVATAR.src = SOURCE_IMAGE;
+      const avatar = new Avatar(MOCK_PARAMETERS_AVATAR);
 
       expect(avatar.columns.length).toBe(2);
-
-      expect(avatar.columns[0].contentBoxes[0].text).toBe('First contentBox');
       expect(avatar.columns[0] instanceof DropDownColumn).toBe(true);
-
-      expect(avatar.columns[1].contentBoxes[0].text).toBe('Second contentBox');
       expect(avatar.columns[1] instanceof DropDownColumn).toBe(true);
+      expect(avatar.src).toBe(SOURCE_IMAGE);
+    });
+
+    test('Without src but with columns- Need to have the correct parameters', () => {
+      const avatar = new Avatar(MOCK_AVATAR_WITHOUT_ID);
+
+      expect(avatar.columns.length).toBe(2);
+      expect(avatar.columns[0] instanceof DropDownColumn).toBe(true);
+      expect(avatar.columns[1] instanceof DropDownColumn).toBe(true);
+      expect(avatar.src).toBe(undefined);
+    });
+
+    test('Without parameters - Need to have the correct parameters', () => {
+      const avatar = new Avatar({});
+
+      expect(avatar.columns.length).toBe(0);
+      expect(avatar.src).toBe(undefined);
+    });
+  });
+  describe('Build', () => {
+    test('Must call the correct methods', () => {
+      jest.spyOn(Avatar.prototype, 'insertOnClickEvent');
+      jest.spyOn(Avatar.prototype, 'dropDownClick');
+
+      // eslint-disable-next-line no-unused-vars
+      const avatar = new Avatar(new DropDown({}));
+      expect(Avatar.prototype.insertOnClickEvent).toHaveBeenCalled();
+      expect(Avatar.prototype.dropDownClick).toHaveBeenCalled();
+    });
+
+    test('with src and columns - Need to have builded correctly htmlElementSource', () => {
+      const MOCK_PARAMETERS_AVATAR = Object.assign(MOCK_AVATAR_WITH_ID);
+      MOCK_PARAMETERS_AVATAR.src = SOURCE_IMAGE;
+      const avatar = new Avatar(MOCK_PARAMETERS_AVATAR);
 
       expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).id).toBe(CUSTOM_ID);
       expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).toBe(SOURCE_IMAGE);
     });
 
-    test('Without custom id - Need to have the correct parameters', () => {
+    test('Without src but with columns- Need to have builded correctly htmlElementSource', () => {
       const avatar = new Avatar(MOCK_AVATAR_WITHOUT_ID);
 
-      expect(avatar.columns.length).toBe(2);
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).id).not.toBe(CUSTOM_ID);
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).not.toBe(SOURCE_IMAGE);
+    });
 
-      expect(avatar.columns[0].contentBoxes[0].text).toBe('First contentBox');
-      expect(avatar.columns[0] instanceof DropDownColumn).toBe(true);
-
-      expect(avatar.columns[1].contentBoxes[0].text).toBe('Second contentBox');
-      expect(avatar.columns[1] instanceof DropDownColumn).toBe(true);
+    test('Without parameters - Need to have builded correctly htmlElementSource', () => {
+      const avatar = new Avatar({});
 
       expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).id).not.toBe(CUSTOM_ID);
-      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).toBe(SOURCE_IMAGE);
+      expect((avatar.htmlElementSource.getElementsByClassName('avatar')[0]).getAttribute('src')).not.toBe(SOURCE_IMAGE);
     });
-  });
-  describe('Build', () => {
+
     test('Without columns - htmlElementSource need to have only the div of avatar', () => {
       const avatar = new Avatar({});
       expect(avatar.htmlElementSource.childElementCount).toBe(1);
