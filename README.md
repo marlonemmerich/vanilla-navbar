@@ -101,7 +101,6 @@ const navbar = new Navbar(navbarParameters);
 #### Column
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
-|html|String|No|Any|Html of the custom element|
 |contentBoxes|Array|Yes|Array of [ContentBox](#ContentBox)|Array of a Dropdown Items objects|
 #### ContentBox
 |Parameter|Type|Optional|Possible values|Description|
@@ -121,10 +120,8 @@ const navbar = new Navbar(navbarParameters);
 #### Dropdown Custom Items
 |Parameter|Type|Optional|Possible values|Description|
 |-|-|-|-|-|
-|text|String|No|Any|Text to the dropdown custom item|
 |idElement|String|Yes|Any|Id to the custom item|
-|href|String|Yes|Any|URL to redirect on click|
-|html|String|Yes|Any|Html of the dropdown custom item|
+|html|String|No|Any|Html of the dropdown custom item|
 
 ## Complete example
 ```script
@@ -169,8 +166,6 @@ const navbarParameters = {
                         {
                             customItems: [
                                 {
-                                    text: 'Option 1',
-                                    href: '/home',
                                     html: `<div class="custom-drop-down-item-example">
                                                 <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
                                                     <h4>Hello, <b>WORLD</b>!</h4>

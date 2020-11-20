@@ -43,7 +43,19 @@ export default class DropDownGeneric extends NavbarElement {
         return false;
       }
 
-      const arrayClassClickedElement = (event.target as Element).className.split(' ');
+      const classesNames = (event.target as Element).className;
+
+      if (!classesNames) {
+        return false;
+      }
+
+      let arrayClassClickedElement = [];
+      // Check if the target have only 1 class
+      if (classesNames.includes(' ')) {
+        arrayClassClickedElement = classesNames.split(' ');
+      } else {
+        arrayClassClickedElement.push(classesNames);
+      }
 
       for (let indexArrayClassesClickedElmnt = 0;
         indexArrayClassesClickedElmnt < arrayClassClickedElement.length;
@@ -76,9 +88,10 @@ export default class DropDownGeneric extends NavbarElement {
         }
       };
 
-      // dropDown.htmlElementSource.onclick = (event) => {
+      const SCROLL_WIDTH = 10;
+
       dropDown.htmlElementSource.addEventListener('click', (event) => {
-        const scrollWidth = window.innerWidth - document.documentElement.clientWidth + 10;
+        const scrollWidth = window.innerWidth - document.documentElement.clientWidth + SCROLL_WIDTH;
         const { innerWidth } = window;
 
         if (!dropDown.htmlElementSource.classList.contains('openned')) {
