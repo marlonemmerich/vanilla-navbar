@@ -2,10 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { NavbarElement, genericNavbarElement } from './navbar-element';
 
 export default class DropDownCustomItem extends NavbarElement implements genericNavbarElement {
-    href: string;
-
-    src: string;
-
     private _html: string;
 
     constructor(dropDown: Partial<DropDownCustomItem>) {
