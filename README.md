@@ -1,6 +1,6 @@
-# Vanilla Navbar
-
-A simple and customizable framework agnostic Navbar, maked with pure JS and CSS. Perfect for your microfrontend projects ;)
+| Statements | Branches | Functions | Lines |
+|:-:|:-:|:-:|:-:|
+| ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") |
 
 ##### You can see an example [here](http://marlonemmerich.com/vanilla-navbar)
 
