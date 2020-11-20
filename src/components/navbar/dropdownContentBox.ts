@@ -21,7 +21,7 @@ export default class DropDownColumnContentBox extends NavbarElement
           const itemObject = new DropDownItem(item);
           this.items.push(itemObject);
         });
-      } else if (contentBoxes.customItems && contentBoxes.customItems) {
+      } else if (contentBoxes.customItems && contentBoxes.customItems.length) {
         contentBoxes.customItems.forEach((customItems: any) => {
           const customItemObject = new DropDownCustomItem(customItems);
           this.items.push(customItemObject);
