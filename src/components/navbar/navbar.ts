@@ -179,7 +179,7 @@ export default class Navbar {
       this.render();
     }
 
-    checkStyleParameters(parameters: any): void {
+    private checkStyleParameters(parameters: any): void {
       if (parameters.customClass) {
         this.customClass = parameters.customClass;
       }
@@ -197,13 +197,13 @@ export default class Navbar {
       }
     }
 
-    buildCodeBase(): void {
+    private buildCodeBase(): void {
       this.buildHtmlSource();
       this.buildHtmlMobileSource();
       this.navbarClick(this);
     }
 
-    buildHtmlSource(): void {
+    private buildHtmlSource(): void {
       const divNavBar = document.createElement('div');
       divNavBar.id = uuidv4();
       divNavBar.className = `body ${this.customClass}`;
@@ -218,7 +218,7 @@ export default class Navbar {
       this.htmlSource = divNavBar;
     }
 
-    buildHtmlMobileSource(): void {
+    private buildHtmlMobileSource(): void {
       const spanMobile = document.createElement('span');
       spanMobile.id = uuidv4();
       spanMobile.className = 'navbar-menu-mobile';
@@ -228,7 +228,7 @@ export default class Navbar {
       this.buildBurguerMenu();
     }
 
-    buildBurguerMenu(): void {
+    private buildBurguerMenu(): void {
       const burguerMenu = document.createElement('span');
       burguerMenu.className = 'burguer-menu right';
 
@@ -326,7 +326,7 @@ export default class Navbar {
       this.htmlMobileSpanSource.appendChild(navbarElement.htmlElementSource);
     }
 
-    navbarClick(navbar: Navbar) : void {
+    private navbarClick(navbar: Navbar) : void {
       const listClick = function test(e: MouseEvent) {
         if ((!navbar.htmlSource.contains((e.target as Element))
           && !navbar.htmlBurguerMenu.contains((e.target as Element)))
