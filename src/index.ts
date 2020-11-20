@@ -45,8 +45,7 @@ const navbarParameters = {
             {
               customItems: [
                 {
-                  text: 'Option 1',
-                  href: '/home',
+                  idElement: 'qqqq',
                   html: `<div class="custom-drop-down-item-example">
                                                 <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
                                                     <h4>Hello, <b>WORLD</b>!</h4>
