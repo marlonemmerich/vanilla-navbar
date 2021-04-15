@@ -6,10 +6,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     entry: './src/components/navbar/navbar.ts',
     output: {
-      libraryTarget: 'umd',
+      path: path.resolve(__dirname, 'dist'),
       filename: 'script.js',
-      path: path.resolve(__dirname, './dist/'),
-      publicPath: '/'
+      library: "Navbar",
+      libraryTarget: "umd",
+      libraryExport: "default",
+      globalObject: "this",
     },
     mode: 'production',
     optimization: {
