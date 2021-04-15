@@ -47,18 +47,18 @@ const navbarParameters = {
                 {
                   idElement: 'qqqq',
                   html: `<div class="custom-drop-down-item-example">
-                                                <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
-                                                    <h4>Hello, <b>WORLD</b>!</h4>
-                                                </div>
-                                                <div class="center">
-                                                    <button id="button-custom-element"
-                                                            class="custom-class-for-a-custom-element"
-                                                            onclick="window.open('https://github.com/')"
-                                                            target="_blank">
-                                                        OPEN GITHUB
-                                                    </button>
-                                                </div>
-                                            </div>`,
+                            <div class="custom-drop-down-item-first-text custom-drop-down-item-text">
+                                <h4>Hello, <b>WORLD</b>!</h4>
+                            </div>
+                            <div class="center">
+                                <button id="button-custom-element"
+                                        class="custom-class-for-a-custom-element"
+                                        onclick="window.open('https://github.com/')"
+                                        target="_blank">
+                                    OPEN GITHUB
+                                </button>
+                            </div>
+                        </div>`,
                 },
               ],
             },
@@ -121,7 +121,7 @@ const navbarParameters = {
         {
           contentBoxes: [
             {
-              text: 'Header 2',
+
               items: [
                 {
                   text: 'Option 3',
