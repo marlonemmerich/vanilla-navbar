@@ -37,6 +37,8 @@ const navbar = new Navbar(navbarParameters);
 |color|String|No|Hex color code|Color of the text elements of the navbar|
 |hoverColor|String|No|Hex color code|Color of the navbar elements on hover (except logos)|
 |customClass|String|Yes|Any|Custom class with your custom styles|
+|customMobileResolution|Number|Yes|Any|Custom resolution to show mobile elements|
+|customElementShadowRoot|String|Yes|Any|If your "vanilla-navbar" tag is inside of any [ShadowRoot](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot), set the custom element here|
 |navbarId|String|Yes|Any|Id of the navbar|
 |logos|Array|Yes|Array of [Logo](#Logo)|Array of a logos obejcts|
 |itens|Array|Yes|Array of [Item](#Item)|Array of a itens obejcts|
