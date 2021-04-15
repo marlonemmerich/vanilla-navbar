@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils } from '../../utils/utils';
 import { NavbarElement, genericNavbarElement } from './navbar-element';
 import DropDownColumnContentBox from './dropdownContentBox';
 
@@ -32,11 +32,11 @@ export default class DropDownColumn extends NavbarElement implements genericNavb
 
     build(): void {
       const columnDropDownContent = document.createElement('span');
-      columnDropDownContent.id = uuidv4();
+      columnDropDownContent.id = Utils.uuidv4();
       columnDropDownContent.className = 'drop-down-content-column-box';
 
       const columnDiv = document.createElement('div');
-      columnDiv.id = uuidv4();
+      columnDiv.id = Utils.uuidv4();
 
       this.contentBoxes.forEach((contentBox) => {
         columnDiv.appendChild(contentBox.htmlElementSource);

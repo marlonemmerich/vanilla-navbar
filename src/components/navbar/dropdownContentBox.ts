@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils } from '../../utils/utils';
 import { NavbarElement, genericNavbarElement } from './navbar-element';
 import DropDownItem from './dropdownItem';
 import DropDownCustomItem from './dropdownCustomItem';
@@ -54,13 +54,13 @@ export default class DropDownColumnContentBox extends NavbarElement
 
     build(): void {
       const divColumnContentBox = document.createElement('div');
-      divColumnContentBox.id = uuidv4();
+      divColumnContentBox.id = Utils.uuidv4();
 
       if (this.text && !this.withCustomItems) {
         const spanContentBox = document.createElement('span');
         spanContentBox.className = 'content-column-header';
         spanContentBox.innerHTML = this.text;
-        spanContentBox.id = this.idElement ? this.idElement : uuidv4();
+        spanContentBox.id = this.idElement ? this.idElement : Utils.uuidv4();
         divColumnContentBox.appendChild(spanContentBox);
       }
 

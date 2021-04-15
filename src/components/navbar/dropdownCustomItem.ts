@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils } from '../../utils/utils';
 import { NavbarElement, genericNavbarElement } from './navbar-element';
 
 export default class DropDownCustomItem extends NavbarElement implements genericNavbarElement {
@@ -22,7 +22,7 @@ export default class DropDownCustomItem extends NavbarElement implements generic
 
     build(): void {
       const option1DropDown1 = document.createElement('div');
-      option1DropDown1.id = this.idElement ? this.idElement : uuidv4();
+      option1DropDown1.id = this.idElement ? this.idElement : Utils.uuidv4();
       option1DropDown1.innerHTML = this.html;
 
       this.htmlElementSource = option1DropDown1;

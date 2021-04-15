@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils } from '../../utils/utils';
 import { NavbarElement, genericNavbarElement } from './navbar-element';
 
 export default class Logo extends NavbarElement implements genericNavbarElement {
@@ -15,14 +15,14 @@ export default class Logo extends NavbarElement implements genericNavbarElement 
 
     build(): void {
       const divLogo = document.createElement('div');
-      divLogo.id = uuidv4();
+      divLogo.id = Utils.uuidv4();
       divLogo.className = `div-logo ${this.getElementClasses()}`;
 
       const anchorLogo = document.createElement('a');
       anchorLogo.href = this.href;
 
       const logo = document.createElement('img');
-      logo.id = this.idElement ? this.idElement : uuidv4();
+      logo.id = this.idElement ? this.idElement : Utils.uuidv4();
       logo.src = this.src;
       logo.className = 'logo';
 

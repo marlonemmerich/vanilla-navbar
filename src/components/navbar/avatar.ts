@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils } from '../../utils/utils';
 import DropDownColumn from './dropdownColumn';
 import DropDownGeneric from './dropdownGeneric';
 import { genericNavbarElement } from './navbar-element';
@@ -22,16 +22,16 @@ export default class Avatar extends DropDownGeneric implements genericNavbarElem
 
     build(): void {
       const dropdown = document.createElement('div');
-      dropdown.id = uuidv4();
+      dropdown.id = Utils.uuidv4();
       dropdown.className = `drop-down ${this.getElementClasses()}`;
 
       const avatar = document.createElement('img');
-      avatar.id = this.idElement ? this.idElement : uuidv4();
+      avatar.id = this.idElement ? this.idElement : Utils.uuidv4();
       avatar.src = this.src;
       avatar.className = 'avatar';
 
       const divAvatar = document.createElement('div');
-      divAvatar.id = uuidv4();
+      divAvatar.id = Utils.uuidv4();
       divAvatar.className = 'div-avatar center drop-down-header';
 
       divAvatar.appendChild(avatar);
@@ -39,12 +39,12 @@ export default class Avatar extends DropDownGeneric implements genericNavbarElem
 
       if (this.columns.length) {
         const arrow = document.createElement('div');
-        arrow.id = uuidv4();
+        arrow.id = Utils.uuidv4();
         arrow.className = 'sort-down';
         divAvatar.appendChild(arrow);
 
         const dropDownContent = document.createElement('div');
-        dropDownContent.id = uuidv4();
+        dropDownContent.id = Utils.uuidv4();
         dropDownContent.className = 'drop-down-content';
 
         this.columns.forEach((column) => {
