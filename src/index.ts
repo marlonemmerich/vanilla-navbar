@@ -331,3 +331,21 @@ const navbarParameters = {
 
 // eslint-disable-next-line no-unused-vars
 const navbar = new Navbar(navbarParameters);
+
+// const customElement = document.createElement('custom-element');
+// customElement.setAttribute('id', 'teste');
+// const shadowRoot = customElement.attachShadow({ mode: 'open' });
+// shadowRoot.innerHTML = `
+//   <style>
+//     @import url("/components/navbar/style.css");
+//     @import url("/index-style/index-style.css");
+//   </style>
+//   <body>
+//     <navbar-vanilla id="navbar-id-2"/>
+//   </body>
+// `;
+
+// document.getElementsByTagName('body')[0].appendChild(customElement);
+
+// eslint-disable-next-line no-unused-vars
+// const navbar2 = new Navbar(navbarParameters2);

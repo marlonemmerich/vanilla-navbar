@@ -1,6 +1,9 @@
 body {
   margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
 }
+
 .custom-class-for-a-custom-element button {
   color: #fff !important;
   text-transform: uppercase;
@@ -12,10 +15,10 @@ body {
   border: none;
   transition: all 0.4s ease 0s;
   cursor: pointer !important;
-  margin-top: 12px;
+  margin-top: 15px;
   margin-left: 5px;
   margin-right: 5px;
-  margin-bottom: 11px;
+  margin-bottom: 13px;
 }
 .custom-drop-down-item-example {
   background-image: url("http://localhost:9000/assets/background-dog.jpg");
