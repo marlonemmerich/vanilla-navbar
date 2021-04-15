@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Utils, DEFAULT_MOBILE_RESOLUTION } from '../../utils/utils';
 import { NavbarElement } from './navbar-element';
 import Logo from './logo';
 import Item from './item';
@@ -7,16 +7,20 @@ import Avatar from './avatar';
 import CustomElement from './customElement';
 import './style.scss';
 
-export default class Navbar {
+class Navbar {
     private _htmlSource: HTMLElement;
 
     private _htmlMobileSpanSource: HTMLElement;
 
-    private _htmlBurguerMenu: HTMLElement;
+    private _htmlBurgerMenu: HTMLElement;
 
     private _navbarId: string;
 
     private _customClass: string = '';
+
+    private _customMobileResolution: number = DEFAULT_MOBILE_RESOLUTION;
+
+    private _customElementShadowRoot: string = undefined;
 
     private _backgroundColor: string = '';
 
@@ -33,6 +37,15 @@ export default class Navbar {
     private _avatars: Array<Avatar>;
 
     private _customElements: Array<CustomElement>;
+
+    private _checkDeviceNavbar = () => {
+      if (window.innerWidth < this.customMobileResolution) {
+        this.htmlSource.classList.replace('is-navbar-desktop', 'is-navbar-mobile');
+        return;
+      }
+
+      this.htmlSource.classList.replace('is-navbar-mobile', 'is-navbar-desktop');
+    };
 
     get htmlSource() {
       // eslint-disable-next-line no-underscore-dangle
@@ -54,14 +67,14 @@ export default class Navbar {
       this._htmlMobileSpanSource = htmlMobileSpanSource;
     }
 
-    get htmlBurguerMenu() {
+    get htmlBurgerMenu() {
       // eslint-disable-next-line no-underscore-dangle
-      return this._htmlBurguerMenu;
+      return this._htmlBurgerMenu;
     }
 
-    set htmlBurguerMenu(_htmlBurguerMenu) {
+    set htmlBurgerMenu(_htmlBurgerMenu) {
       // eslint-disable-next-line no-underscore-dangle
-      this._htmlBurguerMenu = _htmlBurguerMenu;
+      this._htmlBurgerMenu = _htmlBurgerMenu;
     }
 
     get navbarId() {
@@ -134,6 +147,26 @@ export default class Navbar {
       this._customClass = customClass;
     }
 
+    get customMobileResolution() {
+      // eslint-disable-next-line no-underscore-dangle
+      return this._customMobileResolution;
+    }
+
+    set customMobileResolution(customMobileResolution) {
+      // eslint-disable-next-line no-underscore-dangle
+      this._customMobileResolution = customMobileResolution;
+    }
+
+    get customElementShadowRoot() {
+      // eslint-disable-next-line no-underscore-dangle
+      return this._customElementShadowRoot;
+    }
+
+    set customElementShadowRoot(customElementShadowRoot) {
+      // eslint-disable-next-line no-underscore-dangle
+      this._customElementShadowRoot = customElementShadowRoot;
+    }
+
     get backgroundColor() {
       // eslint-disable-next-line no-underscore-dangle
       return this._backgroundColor;
@@ -171,12 +204,16 @@ export default class Navbar {
       this.avatars = [];
       this.customElements = [];
       this.navbarId = parameters.navbarId ? parameters.navbarId : undefined;
+      this.customElementShadowRoot = parameters.customElementShadowRoot;
 
       this.checkStyleParameters(parameters);
 
       this.buildCodeBase();
       this.buildElements(parameters);
       this.render();
+      // eslint-disable-next-line no-underscore-dangle
+      this._checkDeviceNavbar();
+      this.checkForBurgerMenu();
     }
 
     private checkStyleParameters(parameters: any): void {
@@ -195,6 +232,10 @@ export default class Navbar {
       if (parameters.color) {
         this.color = parameters.color;
       }
+
+      if (parameters.customMobileResolution) {
+        this.customMobileResolution = parameters.customMobileResolution;
+      }
     }
 
     private buildCodeBase(): void {
@@ -205,8 +246,8 @@ export default class Navbar {
 
     private buildHtmlSource(): void {
       const divNavBar = document.createElement('div');
-      divNavBar.id = uuidv4();
-      divNavBar.className = `body ${this.customClass}`;
+      divNavBar.id = Utils.uuidv4();
+      divNavBar.className = `body is-navbar-desktop ${this.customClass}`;
       divNavBar.style.backgroundColor = this.backgroundColor;
       divNavBar.style.color = this.color;
 
@@ -220,17 +261,17 @@ export default class Navbar {
 
     private buildHtmlMobileSource(): void {
       const spanMobile = document.createElement('span');
-      spanMobile.id = uuidv4();
+      spanMobile.id = Utils.uuidv4();
       spanMobile.className = 'navbar-menu-mobile';
 
       this.htmlMobileSpanSource = spanMobile;
       this.htmlSource.appendChild(this.htmlMobileSpanSource);
-      this.buildBurguerMenu();
+      this.buildBurgerMenu();
     }
 
-    private buildBurguerMenu(): void {
-      const burguerMenu = document.createElement('span');
-      burguerMenu.className = 'burguer-menu right';
+    private buildBurgerMenu(): void {
+      const burgerMenu = document.createElement('span');
+      burgerMenu.className = 'burger-menu right';
 
       const bar1 = document.createElement('div');
       bar1.className = 'bar1';
@@ -242,14 +283,14 @@ export default class Navbar {
       bar3.style.backgroundColor = this.color;
       bar3.className = 'bar3';
 
-      burguerMenu.appendChild(bar1);
-      burguerMenu.appendChild(bar2);
-      burguerMenu.appendChild(bar3);
+      burgerMenu.appendChild(bar1);
+      burgerMenu.appendChild(bar2);
+      burgerMenu.appendChild(bar3);
 
-      this.htmlBurguerMenu = burguerMenu;
+      this.htmlBurgerMenu = burgerMenu;
 
       // eslint-disable-next-line no-underscore-dangle
-      this._htmlSource.appendChild(this._htmlBurguerMenu);
+      this._htmlSource.appendChild(this._htmlBurgerMenu);
     }
 
     private render(): void {
@@ -257,6 +298,13 @@ export default class Navbar {
         document.querySelector('navbar-vanilla').appendChild(this.htmlSource);
         return;
       }
+
+      if (this.customElementShadowRoot) {
+        (document.querySelector(this.customElementShadowRoot).shadowRoot)
+          .querySelector(`navbar-vanilla#${this.navbarId}`).appendChild(this.htmlSource);
+        return;
+      }
+
       document.querySelector(`navbar-vanilla#${this.navbarId}`).appendChild(this.htmlSource);
     }
 
@@ -326,26 +374,33 @@ export default class Navbar {
       this.htmlMobileSpanSource.appendChild(navbarElement.htmlElementSource);
     }
 
+    private checkForBurgerMenu() : any {
+      // eslint-disable-next-line no-underscore-dangle
+      window.addEventListener('resize', this._checkDeviceNavbar);
+    }
+
     private navbarClick(navbar: Navbar) : void {
       const listClick = function test(e: MouseEvent) {
         if ((!navbar.htmlSource.contains((e.target as Element))
-          && !navbar.htmlBurguerMenu.contains((e.target as Element)))
+          && !navbar.htmlBurgerMenu.contains((e.target as Element)))
                 || ((e.target as HTMLElement) && (e.target as HTMLElement).getAttribute('href') && (e.target as HTMLElement).getAttribute('href') !== '#')) {
           navbar.htmlMobileSpanSource.classList.remove('openned');
-          navbar.htmlBurguerMenu.classList.remove('openned');
+          navbar.htmlBurgerMenu.classList.remove('openned');
           document.removeEventListener('click', listClick, true);
         }
       };
 
-      this.htmlBurguerMenu.onclick = () => {
+      this.htmlBurgerMenu.onclick = () => {
         if (!this.htmlMobileSpanSource.classList.contains('openned')) {
           this.htmlMobileSpanSource.classList.add('openned');
-          this.htmlBurguerMenu.classList.add('openned');
+          this.htmlBurgerMenu.classList.add('openned');
           document.addEventListener('click', listClick, true);
         } else {
           this.htmlMobileSpanSource.classList.remove('openned');
-          this.htmlBurguerMenu.classList.remove('openned');
+          this.htmlBurgerMenu.classList.remove('openned');
         }
       };
     }
 }
+
+export default Navbar;
