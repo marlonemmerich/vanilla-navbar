@@ -68,27 +68,27 @@ navbar-vanilla .sort-down {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
-navbar-vanilla .burguer-menu {
+navbar-vanilla .burger-menu {
   padding: 10px 12px 0px 8px;
   display: inline-block;
   cursor: pointer;
 }
-navbar-vanilla .burguer-menu .bar1,
-navbar-vanilla .burguer-menu .bar2,
-navbar-vanilla .burguer-menu .bar3 {
+navbar-vanilla .burger-menu .bar1,
+navbar-vanilla .burger-menu .bar2,
+navbar-vanilla .burger-menu .bar3 {
   width: 35px;
   height: 5px;
   margin: 6px 0;
   transition: 0.4s;
 }
-navbar-vanilla .burguer-menu.openned .bar1 {
+navbar-vanilla .burger-menu.openned .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
   transform: rotate(-45deg) translate(-9px, 6px);
 }
-navbar-vanilla .burguer-menu.openned .bar2 {
+navbar-vanilla .burger-menu.openned .bar2 {
   opacity: 0;
 }
-navbar-vanilla .burguer-menu.openned .bar3 {
+navbar-vanilla .burger-menu.openned .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
 }
@@ -106,7 +106,7 @@ navbar-vanilla a {
   text-decoration: none;
 }
 @media screen and (min-width: 768px) {
-  navbar-vanilla .burguer-menu {
+  navbar-vanilla .burger-menu {
     display: none;
   }
   navbar-vanilla .navbar-menu-mobile {
@@ -145,6 +145,7 @@ navbar-vanilla a {
     border-right: 1px solid #dfdfdf;
   }
   navbar-vanilla .drop-down-content-column-box .content-column-header {
+    font-size: 16px;
     float: left;
     padding: 15px 10px 15px 20px;
     color: #777;
@@ -175,7 +176,7 @@ navbar-vanilla a {
   }
 }
 @media screen and (max-width: 767px) {
-  navbar-vanilla .burguer-menu {
+  navbar-vanilla .burger-menu {
     display: block;
   }
   navbar-vanilla .navbar-menu-mobile {
@@ -219,9 +220,10 @@ navbar-vanilla a {
     padding-left: 35px;
   }
   navbar-vanilla .navbar-menu-mobile .content-column-header {
+    font-size: 16px;
     padding: 15px 0px 15px 25px;
     display: inline-flex;
-    color: #777;
+    color: red;
   }
   navbar-vanilla .navbar-menu-mobile .drop-down-content {
     display: none;

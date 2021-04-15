@@ -3,13 +3,12 @@ $hover-color: #54157b;
 $font-color: white;
 
 navbar-vanilla {
-    // color: white;
-
     .body {
         width: 100%;
         text-align: center;
         overflow: hidden;
         font-family: Arial;
+        min-height: 64px;
     }
 
     .center {
@@ -50,9 +49,10 @@ navbar-vanilla {
     }
 
     .avatar {
-        height: 35px;
-        width: auto;
+        height: 38px;
+        width: 38px;
         border-radius: 50%;
+        object-fit: cover;
         margin-bottom: -10px;
     }
 
@@ -61,8 +61,8 @@ navbar-vanilla {
     }
 
     .div-avatar {
-        margin-top: 12px;
-        margin-bottom: 18px;
+        margin-top: 14px;
+        margin-bottom: 15px;
         padding-left: 12px;
         padding-right: 11px;
         .sort-down {
@@ -83,24 +83,24 @@ navbar-vanilla {
         border-left: 4px solid transparent;
     }
 
-    .burguer-menu {
-        padding: 10px 12px 0px 8px;
+    .burger-menu {
+        margin: 13px 12px 2px 8px;
         display: inline-block;
         cursor: pointer;
         .bar1, .bar2, .bar3 {
             width: 35px;
             height: 5px;
-            margin: 6px 0;
+            margin: 6px 3px 2px 12px;
             transition: 0.4s;
         }
         &.openned .bar1 {
-            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-            transform: rotate(-45deg) translate(-9px, 6px);
+            -webkit-transform: rotate(-45deg) translate(-8px, 6px);
+            transform: rotate(-45deg) translate(-8px, 6px);
         }
         &.openned .bar2 {opacity: 0;}
         &.openned .bar3 {
             -webkit-transform: rotate(45deg) translate(-8px, -8px);
-            transform: rotate(45deg) translate(-8px, -8px);
+            transform: rotate(45deg) translate(-9px, -8px);
         }
     }
 
@@ -119,7 +119,7 @@ navbar-vanilla {
         color: inherit;
         font-size: 16px;
         text-align: center;
-        padding: 20px 16px;
+        padding: 23px 16px 23px 16px;
         text-decoration: none;
     }
 
@@ -165,8 +165,11 @@ navbar-vanilla {
         width: auto;
         border-right: 1px solid #dfdfdf;
         .content-column-header {
+            font-size: 17px;
+            width: 100%;
             float: left;
-            padding: 15px 10px 15px 20px;
+            text-align: left;
+            padding: 17px 10px 17px 20px;
             color: #777;
         }
 
@@ -194,8 +197,9 @@ navbar-vanilla {
 
 
     // DESKTOP - TABLET
-    @media screen and (min-width: 768px) {
-        .burguer-menu {
+    // @media screen and (min-width: 768px) {
+    .is-navbar-desktop {
+        .burger-menu {
             display: none;
         }
 
@@ -214,14 +218,15 @@ navbar-vanilla {
     }
 
     // MOBILE
-    @media screen and (max-width: 767px) {
-        .burguer-menu {
+    // @media screen and (max-width: 767px) {
+    .is-navbar-mobile {
+        .burger-menu {
             display: block;
         }
 
         .navbar-menu-mobile {
             position: absolute;
-            margin-top: 59px;
+            margin-top: 65px;
             padding-top: 12px;
             display: none;
             height: auto;
@@ -267,8 +272,11 @@ navbar-vanilla {
             }
 
             .content-column-header {
-                padding: 15px 0px 15px 25px;
-                display: inline-flex;
+                font-size: 17px;
+                width: 100%;
+                float: left;
+                text-align: left;
+                padding: 17px 10px 17px 20px;
                 color: #777;
             }
 
@@ -283,7 +291,6 @@ navbar-vanilla {
 
         a {
             font-size: 16px;
-            color: white;
             text-align: center;
             padding: 20px 16px;
             text-decoration: none;
