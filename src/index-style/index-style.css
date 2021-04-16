@@ -15,10 +15,10 @@ body {
   border: none;
   transition: all 0.4s ease 0s;
   cursor: pointer !important;
-  margin-top: 15px;
+  margin-top: 16px;
   margin-left: 5px;
   margin-right: 5px;
-  margin-bottom: 13px;
+  margin-bottom: 14px;
 }
 .custom-drop-down-item-example {
   background-image: url("http://localhost:9000/assets/background-dog.jpg");
@@ -27,7 +27,6 @@ body {
   height: 482px;
   width: 640px;
   margin-bottom: -10px;
-  margin-top: 26px;
 }
 .custom-drop-down-item-text {
   color: white;
@@ -36,6 +35,5 @@ body {
   color: #ffbc2c;
 }
 .custom-drop-down-item-first-text {
-  padding-top: 1px;
-  margin-top: -36px;
+
 }
