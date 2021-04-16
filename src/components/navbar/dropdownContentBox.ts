@@ -57,7 +57,7 @@ export default class DropDownColumnContentBox extends NavbarElement
       divColumnContentBox.id = Utils.uuidv4();
 
       if (this.text && !this.withCustomItems) {
-        const spanContentBox = document.createElement('span');
+        const spanContentBox = document.createElement('div');
         spanContentBox.className = 'content-column-header';
         spanContentBox.innerHTML = this.text;
         spanContentBox.id = this.idElement ? this.idElement : Utils.uuidv4();

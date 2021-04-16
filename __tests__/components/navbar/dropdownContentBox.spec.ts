@@ -81,7 +81,7 @@ describe('DropDownColumnContentBox', () => {
       const dropdownContentBox = new DropDownColumnContentBox(DD_ITEM_MOCK_WITH_TEXT);
 
       expect(dropdownContentBox.htmlElementSource.getElementsByClassName('content-column-header').length).toBe(1);
-      expect((dropdownContentBox.htmlElementSource.getElementsByClassName('content-column-header')[0]).tagName).toBe('SPAN');
+      expect((dropdownContentBox.htmlElementSource.getElementsByClassName('content-column-header')[0]).tagName).toBe('DIV');
     });
 
     test('Without textcustomItems - htmlElementSource dont need to have content-column-header', () => {
