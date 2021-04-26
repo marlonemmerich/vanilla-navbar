@@ -319,7 +319,7 @@ class Navbar {
       }
 
       if (parameters.items && parameters.items.length) {
-        parameters.items.forEach((item: any) => {
+        parameters.items.reverse().forEach((item: any) => {
           const itemObject = new Item(item);
           this.items.push(itemObject);
 
@@ -328,7 +328,7 @@ class Navbar {
       }
 
       if (parameters.dropDowns && parameters.dropDowns.length) {
-        parameters.dropDowns.forEach((dropDown: any) => {
+        parameters.dropDowns.reverse().forEach((dropDown: any) => {
           const dropDownObject = new DropDown(dropDown);
           this.dropDowns.push(dropDownObject);
 
@@ -336,21 +336,21 @@ class Navbar {
         });
       }
 
-      if (parameters.avatars && parameters.avatars.length) {
-        parameters.avatars.forEach((avatar: any) => {
-          const avatarObject = new Avatar(avatar);
-          this.avatars.push(avatarObject);
-
-          this.appendElement(avatarObject);
-        });
-      }
-
       if (parameters.customElements && parameters.customElements.length) {
-        parameters.customElements.reverse().forEach((customElement: any) => {
+        parameters.customElements.forEach((customElement: any) => {
           const customElementObject = new CustomElement(customElement);
           this.customElements.push(customElementObject);
 
           this.appendElement(customElementObject);
+        });
+      }
+
+      if (parameters.avatars && parameters.avatars.length) {
+        parameters.avatars.reverse().forEach((avatar: any) => {
+          const avatarObject = new Avatar(avatar);
+          this.avatars.push(avatarObject);
+
+          this.appendElement(avatarObject);
         });
       }
     }
@@ -367,11 +367,11 @@ class Navbar {
       }
 
       if (navbarElement.forceNavbarTop) {
-        this.htmlSource.appendChild(navbarElement.htmlElementSource);
+        this.htmlSource.prepend(navbarElement.htmlElementSource);
         return;
       }
 
-      this.htmlMobileSpanSource.appendChild(navbarElement.htmlElementSource);
+      this.htmlMobileSpanSource.prepend(navbarElement.htmlElementSource);
     }
 
     private checkForBurgerMenu() : any {
