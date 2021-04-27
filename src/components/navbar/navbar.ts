@@ -270,7 +270,7 @@ class Navbar {
     }
 
     private buildBurgerMenu(): void {
-      const burgerMenu = document.createElement('span');
+      const burgerMenu = document.createElement('div');
       burgerMenu.className = 'burger-menu right';
 
       const bar1 = document.createElement('div');
@@ -288,9 +288,6 @@ class Navbar {
       burgerMenu.appendChild(bar3);
 
       this.htmlBurgerMenu = burgerMenu;
-
-      // eslint-disable-next-line no-underscore-dangle
-      this._htmlSource.appendChild(this._htmlBurgerMenu);
     }
 
     private render(): void {
@@ -353,6 +350,9 @@ class Navbar {
           this.appendElement(avatarObject);
         });
       }
+
+      // eslint-disable-next-line no-underscore-dangle
+      this._htmlSource.prepend(this._htmlBurgerMenu);
     }
 
     private appendElement(navbarElement: NavbarElement, insertHoverEvent: boolean = true): void {
