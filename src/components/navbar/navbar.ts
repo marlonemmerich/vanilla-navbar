@@ -40,11 +40,13 @@ class Navbar {
 
     private _checkDeviceNavbar = () => {
       if (window.innerWidth < this.customMobileResolution) {
-        this.htmlSource.classList.replace('is-navbar-desktop', 'is-navbar-mobile');
+        this.htmlSource.classList.remove('is-navbar-desktop');
+        this.htmlSource.classList.add('is-navbar-mobile');
         return;
       }
 
-      this.htmlSource.classList.replace('is-navbar-mobile', 'is-navbar-desktop');
+      this.htmlSource.classList.remove('is-navbar-mobile');
+      this.htmlSource.classList.add('is-navbar-desktop');
     };
 
     get htmlSource() {
@@ -352,7 +354,7 @@ class Navbar {
       }
 
       // eslint-disable-next-line no-underscore-dangle
-      this._htmlSource.prepend(this._htmlBurgerMenu);
+      this._htmlSource.insertBefore(this._htmlBurgerMenu, this._htmlSource.firstChild);
     }
 
     private appendElement(navbarElement: NavbarElement, insertHoverEvent: boolean = true): void {
@@ -367,11 +369,15 @@ class Navbar {
       }
 
       if (navbarElement.forceNavbarTop) {
-        this.htmlSource.prepend(navbarElement.htmlElementSource);
+        this.htmlSource.insertBefore(
+          navbarElement.htmlElementSource, this.htmlSource.firstChild,
+        );
         return;
       }
 
-      this.htmlMobileSpanSource.prepend(navbarElement.htmlElementSource);
+      this.htmlMobileSpanSource.insertBefore(
+        navbarElement.htmlElementSource, this.htmlMobileSpanSource.firstChild,
+      );
     }
 
     private checkForBurgerMenu() : any {
