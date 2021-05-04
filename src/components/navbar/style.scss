@@ -166,7 +166,7 @@ navbar-vanilla {
         border-right: 1px solid #dfdfdf;
         .content-column-header {
             font-size: 17px;
-            width: 100%;
+            width: calc(100% - 34px);
             text-align: left;
             margin: 17px 10px 0px 17px;
             color: #777;
@@ -272,7 +272,7 @@ navbar-vanilla {
 
             .content-column-header {
                 font-size: 17px;
-                width: 100%;
+                width: calc(100% - 34px);
                 float: left;
                 text-align: left;
                 margin: 17px 10px 17px 20px;
